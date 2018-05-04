@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recruitment Application</title>
+<!--     <script type="text/javascript" src="sketch.js"></script> -->
+
+</head>
+<body>
+    <h1>Recruitment Application</h1>
+
+    <h2>Gender Income</h2>
+    <div id="viz">
+        <ul></ul>
+    </div>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script>
+
+d3.json("../static/data.json", function(json){
+
+    data = json;
+
+    d3.select("#viz ul")
+        .selectAll("li")
+        .data(json.data)
+        .enter()
+        .append("li")
+        .text(function(d) { return d.gender + " : " + d.income_max + " : " + d.income_avg + " : " + d.income_min; });
+});
+    </script>
+</body>
+</html>
