@@ -1,0 +1,23 @@
+---
+title: "regression"
+output: html_notebook
+---
+
+```{r}
+head(data)
+```
+
+
+```{r}
+#multivariate regression
+regression_1 <- lm (insurance_segment_id~ income + economic_stability + education_id + facebook_user_rank + race_code + youtube_user_rank + gender_dum,  data=data)
+summary(regression_1)
+```
+
+## Strongest correlation with insurance segment
+1. Gender
+2. Economic stability
+3. Education
+4. Facebook User Rank
+5. Race
+6. Youtube User Rank
