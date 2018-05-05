@@ -3,29 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Economic Stability's Effect on Insurance Policy</title>
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="sketch.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,500,600,700|Hind+Vadodara:300,400,500,600,900" rel="stylesheet">
 </head>
 <body>
-    <h1>Primary Factors Influencing Insurance Segments</h1>
-    <h2>Customer Insights</h2>
-    
+    <div class="header" id="top">
+        <div class="title">
+            <a href="#top"><img src="../assets/logo.jpg" class="logo"></a>
+        </div>
+
+        <div class="horizontal-menu">
+            <h2 onclick="smallMultiples();">Small Multiples</h2>
+            <h2 onclick="editorial();">Editorial</h2>
+        </div>
+    </div>
+
 <div class="container">
-    <div class="image" id="image1"></div>
-    <div class="image" id="image2"></div>
-    <div class="image" id="image3"></div>
-    <div class="image" id="image4"></div>
-    <div class="image" id="image5"></div>
-    <div class="image" id="image6"></div>
-    <div class="image" id="image7"></div>
-    <div class="image" id="image8"></div>
+<h2>Economic Stability Signature by Customer</h2>
+    <div class="image1" id="image1"></div>
+    <div class="image2" id="image2"></div>
+    <div class="image3" id="image3"></div>
+    <div class="image4" id="image4"></div>
+    <div class="image5" id="image5"></div>
+    <div class="image6" id="image6"></div>
+    <div class="image7" id="image7"></div>
+    <div class="image8" id="image8"></div>
 </div>
 
+    <div id="es">
     <h2>Economic Stability</h2>
-    <div id="viz">
         <ul></ul>
+    <button onclick="reset();" style="margin:auto;">Reset</button>
+        <div id="vis"></div>
+        <div class="details">
+        <div class="section1" id="section1">
+            <h1 id="section1-title"></h1>
+            <h2 id="section1-percent"></h2>
+        </div>
+
+        <div class="section2" id="section2">
+            <h1 id="section2-title"></h1>
+            <h2 id="section2-percent"></h2>
+        </div>
+
+        <div class="section3" id="section3">
+            <h1 id="section3-title"></h1>
+            <h2 id="section3-percent"></h2> 
+        </div>
+    </div>
     </div>
 
 </body>

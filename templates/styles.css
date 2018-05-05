@@ -1,11 +1,398 @@
-.container {
+body {
+	top:0;
+	left:0;
 	width:100%;
-	padding:5%;
+	margin:0;
+	font-family: 'Hind Vadodara', sans-serif;
+	overflow-x:hidden;
 }
 
-.image {
-	width:20%;
-	height:350px;
-	background-color:grey;
+h1 {
+	font-family: 'EB Garamond', serif;
+	text-transform:none;
+	font-size:2.5em;
+	letter-spacing:0em;
+}
+
+h2 {
+	font-family: 'Hind Vadodara', sans-serif;
+	font-weight:300;
+	font-size:0.8em;
+	letter-spacing:0.2em;
+	text-transform:uppercase;
+}
+
+h3 {
+	font-family: 'Hind Vadodara', sans-serif;
+	font-weight:600;
+	font-size:0.8em;
+}
+
+.horizontal-menu{
 	display:inline-block;
+	color:white;
+	vertical-align:top;
+	padding-top:2%;
+	width:70%;
+}
+
+.horizontal-menu h2 {
+	font-weight:900;
+	cursor:pointer;
+	display:inline-block;
+	margin-right:5%;
+}
+
+.horizontal-menu h2:hover {
+	border-bottom: 2px solid #199CDB;
+}
+
+.container {
+	width:100%;
+	padding:8% 5%;
+	z-index:0;
+}
+
+.header {
+	background-color: #002D6E;
+	position:fixed;
+	width:100%;
+	z-index:1;
+}
+.title {
+	width:25%;
+	padding:1%;
+	color:white;
+	display:inline-block;
+}
+
+.title h2 {
+	font-family: 'Hind Vadodara', sans-serif;
+	font-weight:300;
+	padding:0%;
+	margin:0%;
+	font-size:0.4em;
+	letter-spacing:0.2em;
+	text-transform:uppercase;
+	margin-top:-1%;
+	padding-left:2%;
+}
+
+.logo {
+	width:60%;
+	left:0;
+	padding:2% 15%;
+}
+
+#es {
+	padding:5%;
+	background-color: #E7E7E7;
+	height:80vh;
+	transition:0.5s;
+}
+
+
+.image1, .image2, .image3, .image4, .image5, .image6, .image7, .image8 {
+	position:relative;
+	width:20%;
+	height:auto;
+	display:inline-block;
+	margin:1%;
+}
+
+img {
+	width:100%;
+	height:100%;
+}
+
+.overlay, .overlay2, .overlay3, .overlay4,
+.overlay5, .overlay6, .overlay7, .overlay8 {
+   	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height:100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #E6E6E6;
+    overflow:scroll;
+}
+
+.segment {
+	margin-bottom:-10%;
+}
+
+.image1:hover #overlay1 {
+	opacity:0.9;
+}
+
+.image2:hover #overlay2 {
+	opacity:0.9;
+}
+
+.image3:hover #overlay3 {
+	opacity:0.9;
+}
+
+.image4:hover #overlay4 {
+	opacity:0.9;
+}
+
+.image5:hover #overlay5 {
+	opacity:0.9;
+}
+
+.image6:hover #overlay6 {
+	opacity:0.9;
+}
+
+.image7:hover #overlay7 {
+	opacity:0.9;
+}
+
+.image8:hover #overlay8 {
+	opacity:0.9;
+}
+
+.overlay h1, .overlay2 h1, .overlay3 h1,
+.overlay4 h1, .overlay5 h1, .overlay6 h1,
+.overlay6 h1, .overlay7 h1, .overlay8 h1{
+	margin-left:0%;
+	line-height:1em;
+	font-weight:400;
+	width:70%;
+	color:black;
+}
+
+.overlay3 h1, .overlay7 h1, .overlay8 h1 {
+	width:50%;
+}
+
+.overlay h2, .overlay2 h2, .overlay3 h2,
+.overlay4 h2, .overlay5 h2, .overlay6 h2,
+.overlay6 h2, .overlay7 h2, .overlay8 h2 {
+	margin-left: 10%;
+	margin-top:10%;
+	color: #4D4D4D;
+}
+
+.overlay h3, .overlay2 h3, .overlay3 h3,
+.overlay4 h3, .overlay5 h3, .overlay6 h3,
+.overlay6 h3, .overlay7 h3, .overlay8 h3 {
+	font-size:0.4em;
+	display:block;
+	margin-bottom:0%;
+	padding-bottom:0%;
+}
+
+.gauge, .gauge2, .gauge3,
+.gauge4, .gauge5, .gauge6,
+.gauge7, .gauge8 {
+	margin-top:0%;
+	padding-top:0%;
+	height:10px;
+	width:70%;
+	margin-left:10%;
+	cursor:pointer;
+	display:inline-block;
+}
+
+.low {
+	background-color:#81BEDB;
+	height:10px;
+	display:inline-block;
+}
+
+.medium {
+	background-color:#199CDB;
+	height:10px;
+	display:inline-block;
+}
+
+.high {
+	background-color: #04316A;
+	height:10px;
+	display:inline-block;
+}
+
+.unknown {
+	background-color: grey;
+	height:10px;
+	display:inline-block;
+}
+
+button {
+	line-height:3em;
+	border: 2px solid black;
+	background-color:transparent;
+	font-family: 'Hind Vadodara', sans-serif;
+	font-weight:600;
+	font-size:0.5em;
+	text-transform:uppercase;
+	letter-spacing:0.1em;
+	margin:5% 30% 0% 30%;
+	padding:0% 5%;
+	transition:0.25s ease;
+	cursor:pointer;
+}
+
+button a {
+	text-decoration:none;
+	color: black;
+}
+
+button:hover {
+	background-color:#C1C1C1;
+	border: 2px solid #C1C1C1;
+}
+
+.tooltip {
+	display:none;
+	position: absolute;	
+	background-color:#F0E1CC;
+    color:black;	
+    font-size:0.8em;	
+    text-align: center;	
+    margin-top:5%;
+    margin-left:5%;
+    width: auto;					
+    height: 10px;					
+    padding:2% 2% 5% 2%;
+    border:0.05em solid black;
+}
+
+#gauge1 .low:hover #tooltip1{
+	display:inline;
+}
+
+#gauge1 .medium:hover #tooltip2{
+	display:inline;
+}
+
+#gauge1 .high:hover #tooltip3{
+	display:inline;
+}
+
+#gauge2 .low:hover #tooltip4{
+	display:inline;
+}
+
+#gauge2 .medium:hover #tooltip5{
+	display:inline;
+}
+
+#gauge2 .high:hover #tooltip6{
+	display:inline;
+}
+
+#gauge3 .low:hover #tooltip7{
+	display:inline;
+}
+
+#gauge3 .medium:hover #tooltip8{
+	display:inline;
+}
+
+#gauge3 .high:hover #tooltip9{
+	display:inline;
+}
+
+#gauge4 .low:hover #tooltip10{
+	display:inline;
+}
+
+#gauge4 .medium:hover #tooltip11{
+	display:inline;
+}
+
+#gauge4 .high:hover #tooltip12{
+	display:inline;
+}
+#gauge5 .low:hover #tooltip13{
+	display:inline;
+}
+
+#gauge5 .medium:hover #tooltip14{
+	display:inline;
+}
+
+#gauge5 .high:hover #tooltip15{
+	display:inline;
+}
+
+#gauge6 .low:hover #tooltip16{
+	display:inline;
+}
+
+#gauge6 .medium:hover #tooltip17{
+	display:inline;
+}
+
+#gauge6 .high:hover #tooltip18{
+	display:inline;
+}
+
+#gauge7 .low:hover #tooltip19{
+	display:inline;
+}
+
+#gauge7 .medium:hover #tooltip20{
+	display:inline;
+}
+
+#gauge7 .high:hover #tooltip21{
+	display:inline;
+}
+#gauge8 .low:hover #tooltip22{
+	display:inline;
+}
+
+#gauge8 .medium:hover #tooltip23{
+	display:inline;
+}
+
+#gauge8 .high:hover #tooltip24{
+	display:inline;
+}
+
+svg {
+	overflow:visible;
+	transition:0.5s ease;
+}
+
+.nodetext {
+  font-size:0.8em;
+  fill:white;
+}
+
+.node:not(:hover) .nodetext {
+  display: none;
+  fill:black;
+}
+
+.details {
+	width:90%;
+	margin:-5% 10% 0% 5%;
+	transition:2s ease;
+}
+
+.details h1 {
+	font-weight:300;
+}
+
+.section1, .section2, .section3 {
+	position:relative;
+	display:inline-block;
+	width:25%;
+	height:auto;
+	margin:0% 3% 0% 5%;
+	transition:0.5s ease;
+}
+
+.details em {
+	font-style:normal;
+	font-weight:900;
+	color:#002D6E ;
 }
