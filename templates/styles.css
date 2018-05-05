@@ -1,0 +1,11 @@
+.container {
+	width:100%;
+	padding:5%;
+}
+
+.image {
+	width:20%;
+	height:350px;
+	background-color:grey;
+	display:inline-block;
+}
