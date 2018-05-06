@@ -8,6 +8,35 @@ var seg7;
 var seg8;
 var groupByClass;
 
+window.onscroll = function() {scrollState()};
+
+function scrollState() {
+
+    var elmnt = document.getElementById("es");
+    var rep = elmnt.offsetTop;
+    var elmnt2 = document.getElementById("landing");
+    var rep2 = elmnt2.offsetTop;
+    var elmnt3 = document.getElementById("signature");
+    var rep3 = elmnt3.offsetTop;
+
+
+    if (window.pageYOffset >= rep2) { 
+        $("#small-multiples").css("opacity", "1");
+        $("#editorial").css("opacity", "1");
+        $(".header").css("background-color", "#002D6E");
+
+    } else if (window.pageYOffset <= elmnt3.offsetHeight){
+        $("#small-multiples").css("opacity", "0");
+        $("#editorial").css("opacity", "0");
+
+    } else if (window.pageYOffset <= elmnt2.offsetHeight){
+        $(".header").css("background-color", "#002D6E");
+        $("#small-multiples").css("opacity", "0");
+        $("#editorial").css("opacity", "0");
+
+    };
+};
+
 d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/data.json", function(json){
         
     json.forEach(function(d) {
@@ -35,6 +64,25 @@ d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/data.json
     console.log(groupByClass);
 
     formatPercent = d3.format(".0%")
+
+    // Average Income by Economic Reclass
+    lowIncome= json.filter(function(d) { 
+    return d.economic_stability_class == "Low"
+    });
+
+    lowIncomeAvg = d3.mean(lowIncome, function(d) { return d.income; });
+
+    medIncome= json.filter(function(d) { 
+    return d.economic_stability_class == "Medium"
+    });
+
+    medIncomeAvg = d3.mean(medIncome, function(d) { return d.income; });
+
+    highIncome= json.filter(function(d) { 
+    return d.economic_stability_class == "High"
+    });
+
+    highIncomeAvg = d3.mean(highIncome, function(d) { return d.income; });
 
     // Filter by Insurance Segments
     seg1= json.filter(function(d) { 
@@ -172,9 +220,8 @@ function getProfiles() {
         .data(seg1.filter(function (d, i) { return i === 0;}))
         .enter()
         .append('button')
-        .append('a')
-        .attr('href',"seg1.html")
-        .text("View More")
+        .attr('onclick',"nextSteps();")
+        .text("Deep Dive")
 
     // End profile 1
 
@@ -269,9 +316,8 @@ function getProfiles() {
         .data(seg2.filter(function (d, i) { return i === 0;}))
         .enter()
         .append('button')
-        .append('a')
-        .attr('href',"seg2.html")
-        .text("View More")
+        .attr('onclick',"nextSteps();")
+        .text("Deep Dive")
 
     // End profile 2
 
@@ -363,9 +409,8 @@ function getProfiles() {
         .data(seg3.filter(function (d, i) { return i === 0;}))
         .enter()
         .append('button')
-        .append('a')
-        .attr('href',"seg3.html")
-        .text("View More")
+        .attr('onclick',"nextSteps();")
+        .text("Deep Dive")
 
     // End profile 3
 
@@ -456,9 +501,8 @@ function getProfiles() {
         .data(seg4.filter(function (d, i) { return i === 0;}))
         .enter()
         .append('button')
-        .append('a')
-        .attr('href',"seg4.html")
-        .text("View More")
+        .attr('onclick',"nextSteps();")
+        .text("Deep Dive")
 
     // End profile 4
 
@@ -550,9 +594,8 @@ function getProfiles() {
         .data(seg5.filter(function (d, i) { return i === 0;}))
         .enter()
         .append('button')
-        .append('a')
-        .attr('href',"seg5.html")
-        .text("View More")
+        .attr('onclick',"nextSteps();")
+        .text("Deep Dive")
 
     // End profile 5
     // Begin profile 6
@@ -643,9 +686,8 @@ function getProfiles() {
         .data(seg6.filter(function (d, i) { return i === 0;}))
         .enter()
         .append('button')
-        .append('a')
-        .attr('href',"seg6.html")
-        .text("View More")
+        .attr('onclick',"nextSteps();")
+        .text("Deep Dive")
     // End profile 6
     // Begin profile 7
     var seg7Low = seg7.filter(function(d) { 
@@ -734,9 +776,8 @@ function getProfiles() {
         .data(seg7.filter(function (d, i) { return i === 0;}))
         .enter()
         .append('button')
-        .append('a')
-        .attr('href',"seg7.html")
-        .text("View More")
+        .attr('onclick',"nextSteps();")
+        .text("Deep Dive")
     // End profile 7
     // Begin profile 8
     var seg8Low = seg8.filter(function(d) { 
@@ -824,9 +865,8 @@ function getProfiles() {
         .data(seg8.filter(function (d, i) { return i === 0;}))
         .enter()
         .append('button')
-        .append('a')
-        .attr('href',"seg8.html")
-        .text("View More")
+        .attr('onclick',"nextSteps();")
+        .text("Deep Dive")
 }
 
 function smallMultiples() {
@@ -839,6 +879,14 @@ function editorial() {
     for (i=1;i<9;i++){
     document.getElementById("overlay"+[i]).style.opacity="";
     }
+}
+
+function nextSteps() {
+    document.getElementById("next-steps").style.display = "inline";
+}
+
+function closeNextSteps() {
+    document.getElementById("next-steps").style.display = "none";
 }
 
 function getCircles() {
@@ -870,14 +918,13 @@ function getCircles() {
     return (d.economic_stability_class == "High") & (d.gender == "M")
     });
 
-
     var esCircles = [
     {"radius": lowCircleR, "color" : "#81BEDB", "x_axis": ".25", "y_axis": ".60", "label": "Low", 
     "percent": groupByClass[0].value, "movex": "0.1", "movey": "0.2"},
     {"radius": highCircleR, "color" : "#04316A" , "x_axis": ".4", "y_axis": ".25", "label": "High", 
     "percent": groupByClass[1].value , "movex": "-0.05", "movey": "-0.1"},
     {"radius": mediumCircleR, "color" : "#199CDB", "x_axis": ".60", "y_axis": ".50", "label": "Medium", 
-    "percent": groupByClass[2].value , "movex": "-0.15", "movey": "0.2"}];
+    "percent": groupByClass[2].value , "movex": "-0.18", "movey": "0.2"}];
 
     var svg = d3.select("#vis").append("svg")
         .attr("width", "100%")
@@ -903,47 +950,62 @@ function getCircles() {
     var node = svg.selectAll("circle");
 
     formatDecimal = d3.format(".2s");
+    formatMoney = d3.format("($,.2r");
 
     var t = d3.transition()
     .duration(2600)
     .ease(d3.easeBounce);
 
+    function play() {
+
+    d3.selectAll("circle")
+    .transition(t)
+    .attr("cx", function (d) { return formatPercent(d.x_axis - d.movex); })
+    .attr("cy", function (d) { return formatPercent(d.y_axis - d.movey); }) 
+
+
+    d3.select(".details").attr("margin-top:-8%")
+    d3.select("#section1-title").html("Low: " + formatPercent(groupByClass[0].value/json.length)); 
+    d3.select("#section1-percent").html("Females: <em>" + formatPercent(lowF.length/groupByClass[0].value) +
+    "</em><br> Males: <em>" + formatPercent(lowM.length/groupByClass[0].value) + "</em><br>"
+    + "Average Income: <em>" + formatMoney(lowIncomeAvg*1000)+ "</em>"); 
+    d3.select("#section2-title").html("High: " + formatPercent(groupByClass[1].value/json.length)); 
+    d3.select("#section2-percent").html("Females: <em>" + formatPercent(highF.length/groupByClass[1].value)+
+    "</em><br> Males: <em>" + formatPercent(highM.length/groupByClass[1].value) + "</em><br>"
+    + "Average Income: <em>" + formatMoney(highIncomeAvg*1000)+ "</em>"); 
+    d3.select("#section3-title").html("Medium: " + formatPercent(groupByClass[2].value/json.length)); 
+    d3.select("#section3-percent").html("Females: <em>" + formatPercent(medF.length/groupByClass[2].value)+
+    "</em><br> Males: <em>" + formatPercent(medM.length/groupByClass[2].value) + "</em><br>"
+    + "Average Income: <em>" + formatMoney(medIncomeAvg*1000)+ "</em>"); 
+    };
+
+    play();
+
     var setEvents = circle
-            .on( 'click', function() {
-              d3.selectAll("circle")
-              .transition(t)
-              .attr("cx", function (d) { return formatPercent(d.x_axis - d.movex); })
-              .attr("cy", function (d) { return formatPercent(d.y_axis - d.movey); }) 
+    .on( 'click', function() {
+      // d3.selectAll("circle")
+      // .transition(t)
+      // .attr("cx", function (d) { return formatPercent(d.x_axis - d.movex); })
+      // .attr("cy", function (d) { return formatPercent(d.y_axis - d.movey); }) 
+    })
 
-              d3.select(".details").attr("margin-top:-8%")
-              d3.select("#section1-title").html("Low: " + formatPercent(groupByClass[0].value/json.length)); 
-              d3.select("#section1-percent").html("Females: <em>" + formatPercent(lowF.length/groupByClass[0].value)+
-                "</em><br> Males: <em>" + formatPercent(lowM.length/groupByClass[0].value) + "</em>"); 
-              d3.select("#section2-title").html("High: " + formatPercent(groupByClass[1].value/json.length)); 
-              d3.select("#section2-percent").html("Females: <em>" + formatPercent(highF.length/groupByClass[1].value)+
-                "</em><br> Males: <em>" + formatPercent(highM.length/groupByClass[1].value) + "</em>"); 
-              d3.select("#section3-title").html("Medium: " + formatPercent(groupByClass[2].value/json.length)); 
-              d3.select("#section3-percent").html("Females: <em>" + formatPercent(medF.length/groupByClass[2].value)+
-                "</em><br> Males: <em>" + formatPercent(medM.length/groupByClass[2].value) + "</em>"); 
-            })
-
-          .on( 'mouseenter', function() {
-            // select element in current context
-            d3.select( this )
-              .transition()
-              .attr("r",  function(d){return d.radius + 10})
-          })
-          // set back
-          .on( 'mouseleave', function() {
-            d3.select( this )
-              .transition()
-              .attr("r",  function(d){return d.radius})
-          });
+    .on( 'mouseenter', function() {
+    // select element in current context
+    d3.select( this )
+      // .transition()
+      // .attr("r",  function(d){return d.radius + 10})
+    })
+    // set back
+    .on( 'mouseleave', function() {
+    d3.select( this )
+      // .transition()
+      // .attr("r",  function(d){return d.radius})
     });
 
+    });
 }
 
-function reset () {
+function replay () {
     d3.select(".details").attr("margin-top:-5%")
     d3.select("#section1-title").html(""); 
     d3.select("#section1-percent").html(""); 

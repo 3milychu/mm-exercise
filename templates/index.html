@@ -2,40 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Economic Stability's Effect on Insurance Policy</title>
+    <title>Economic Stability's Effect on Insurance Segementation</title>
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="sketch.js"></script>
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,500,600,700|Hind+Vadodara:300,400,500,600,900" rel="stylesheet">
 </head>
 <body>
+
+
+<!-- Navigation -->
     <div class="header" id="top">
         <div class="title">
-            <a href="#top"><img src="../assets/logo.jpg" class="logo"></a>
+            <a href="#es"><img src="../assets/logo.jpg" class="logo"></a>
         </div>
 
         <div class="horizontal-menu">
-            <h2 onclick="smallMultiples();">Small Multiples</h2>
-            <h2 onclick="editorial();">Editorial</h2>
+            <a href="#signature"><h2 id="small-multiples" onclick="smallMultiples();">Small Multiples View</h2></a>
+            <a href="#signature"><h2 id="editorial" onclick="editorial();">Editorial View</h2></a>
         </div>
     </div>
 
-<div class="container">
-<h2>Economic Stability Signature by Customer</h2>
-    <div class="image1" id="image1"></div>
-    <div class="image2" id="image2"></div>
-    <div class="image3" id="image3"></div>
-    <div class="image4" id="image4"></div>
-    <div class="image5" id="image5"></div>
-    <div class="image6" id="image6"></div>
-    <div class="image7" id="image7"></div>
-    <div class="image8" id="image8"></div>
-</div>
-
-    <div id="es">
-    <h2>Economic Stability</h2>
+<!-- All Customers by Economic Stability -->
+<div id="es">
+    <h2 id="bob">Book-of-Business By Economic Stability<br>N=100,000</h2>
         <ul></ul>
-    <button onclick="reset();" style="margin:auto;">Reset</button>
+    <button onclick="replay();" style="margin:auto;">Replay</button>
+    <a href="#landing"><button style="margin:auto;">Next</button></a>
         <div id="vis"></div>
         <div class="details">
         <div class="section1" id="section1">
@@ -53,7 +48,68 @@
             <h2 id="section3-percent"></h2> 
         </div>
     </div>
+</div>
+
+<!-- Landing -->
+<div id = "landing">
+    <div class="content">
+        <h1>Building Economic Stability Signatures</h1>
+        <p>We know economic stability is a strong determinant in customer segmentation. What does its influence on customer segmentation look like? The 30 economic stability categories used by Mass Mutual were reclassed into three categories: "High" (1-10), "Medium" (11-20) and "Low" (21-30). The gender composition and income characteristics are shown above.</p>
+        <p>From here, the lower fidelity grading was used to produce clear signatures on economic stability across customer segmentations.</p>
+        <a href="#signature"><button>Economic Stability as a Signature</button></a>
     </div>
+</div>
+
+
+<!-- Economic Stability Signature by Insurance Segment -->
+<h2 id="signature-heading">Economic Stability Signature by Customer</h2>
+<div class="container" id="signature">
+
+       <!-- Next Steps -->
+    <div class="next" id="next-steps">
+        <div class="content"><close onclick="closeNextSteps();">x</close>
+            <h1>Next Steps</h1>
+            <p>Contact the applicant, Emily Chu, to discuss next steps and ideas!</p>
+            <a href="mailto:3milychu@gmail.com?subject=Next Steps&body=Welcome to the team! Just kidding, there are some formalities we must address. Let's find some time to meet in person!"><button>Contact</button></a>
+         </div>
+    </div>
+    
+    <div class="image1" id="image1"></div>
+    <div class="image2" id="image2"></div>
+    <div class="image3" id="image3"></div>
+    <div class="image4" id="image4"></div>
+    <div class="image5" id="image5"></div>
+    <div class="image6" id="image6"></div>
+    <div class="image7" id="image7"></div>
+    <div class="image8" id="image8"></div>
+</div>
+
+
+
+<script>
+        
+// Smooth Scroll
+
+$(document).ready(function(){
+$("a").on('click', function(event) {
+
+  if (this.hash !== "") {
+    event.preventDefault();
+
+    var hash = this.hash;
+
+    $('html, body').animate({
+      scrollTop: $(hash).offset().top
+    }, 800, function(){
+ 
+      window.location.hash = hash;
+    });
+  } 
+});
+});
+
+</script>
+</script>
 
 </body>
 </html>
