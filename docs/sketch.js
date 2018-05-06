@@ -906,7 +906,7 @@ function closeReclassInfo() {
 function getCircles() {
     d3.select("svg").remove();
 
-    d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/data.json", function(json){
+    d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/static/data.json", function(json){
 
     var totalRadius=Math.sqrt(json.length/Math.PI)
     var lowCircleR = (groupByClass[0].value/json.length)*totalRadius;
