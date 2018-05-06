@@ -37,7 +37,7 @@ function scrollState() {
     };
 };
 
-d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/data.json", function(json){
+d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/static/data.json", function(json){
         
     json.forEach(function(d) {
         d.economic_stability = d.economic_stability;
@@ -151,7 +151,7 @@ function getProfiles() {
     var percentSeg1High = seg1High.length/seg1.length;
 
     d3.select(".image1").selectAll("img").remove();
-    // d3.select(".image1").selectAll("div").remove();
+
     var img1 = d3.select(".image1").selectAll("#image1")
         .data(seg1.filter(function (d, i) { return i === 0;}))
         .enter()
