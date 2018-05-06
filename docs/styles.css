@@ -30,7 +30,7 @@ h3 {
 
 #landing {
   height:100vh;
-  background-image: url("../assets/bg.jpg");
+  background-image: url("https://raw.githubusercontent.com/3milychu/mm-exercise/master/assets/bg.jpg");
   background-size: 100% auto;
   background-attachment: fixed;
   background-repeat:no-repeat;
