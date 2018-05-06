@@ -9,10 +9,14 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="sketch.js"></script>
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,500,600,700|Hind+Vadodara:300,400,500,600,900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-
+<div class="outer">
+<!-- Loading Overlay -->
+<div class="loading" id="loading">
+    <h1>Loading</h1>
+</div>
 <!-- Navigation -->
     <div class="header" id="top">
         <div class="title">
@@ -22,15 +26,26 @@
         <div class="horizontal-menu">
             <a href="#signature"><h2 id="small-multiples" onclick="smallMultiples();">Small Multiples View</h2></a>
             <a href="#signature"><h2 id="editorial" onclick="editorial();">Editorial View</h2></a>
+            <h2 id="get-reclass" style="float:right;" onclick="reclassInfo();lightsOut();">Reclassification</h2>
         </div>
     </div>
 
 <!-- All Customers by Economic Stability -->
 <div id="es">
+
+       <!-- Reclass Info -->
+    <div class="next" id="reclass">
+        <div class="content"><close onclick="closeReclassInfo();lightsOn();">x</close>
+            <h1>Economic Stability Reclass</h1>
+            <p>The 30 economic stability categories used by Mass Mutual were reclassed into three categories: "High" (1-10), "Medium" (11-20) and "Low" (21-30). The gender composition and income characteristics are shown above.</p>
+            <a href="https://github.com/3milychu/mm-exercise/blob/master/notebook.ipynb" target="_blank"><button>The Notebook</button></a>
+         </div>
+    </div>
+
     <h2 id="bob">Book-of-Business By Economic Stability<br>N=100,000</h2>
         <ul></ul>
     <button onclick="replay();" style="margin:auto;">Replay</button>
-    <a href="#landing"><button style="margin:auto;">Next</button></a>
+    <a href="#landing"><button style="margin:auto;">Got It</button></a>
         <div id="vis"></div>
         <div class="details">
         <div class="section1" id="section1">
@@ -48,14 +63,16 @@
             <h2 id="section3-percent"></h2> 
         </div>
     </div>
+
+
 </div>
 
 <!-- Landing -->
 <div id = "landing">
     <div class="content">
         <h1>Building Economic Stability Signatures</h1>
-        <p>We know economic stability is a strong determinant in customer segmentation. What does its influence on customer segmentation look like? The 30 economic stability categories used by Mass Mutual were reclassed into three categories: "High" (1-10), "Medium" (11-20) and "Low" (21-30). The gender composition and income characteristics are shown above.</p>
-        <p>From here, the lower fidelity grading was used to produce clear signatures on economic stability across customer segmentations.</p>
+        <p>Broadly speaking, MassMutual's customer base is mostly made up of those of Medium economic stability, followed by those of High and Low economic stability respectively.</p>
+        <p>Since economic stability is the <a href="https://github.com/3milychu/mm-exercise/blob/master/regression/regression.Rmd">second strongest determinant of customer segmentation,</a> building clear signatures on economic stability for each segment can help identify areas of differentiation needed to address contrasting needs and wants.</p>
         <a href="#signature"><button>Economic Stability as a Signature</button></a>
     </div>
 </div>
@@ -83,9 +100,7 @@
     <div class="image7" id="image7"></div>
     <div class="image8" id="image8"></div>
 </div>
-
-
-
+</div>
 <script>
         
 // Smooth Scroll

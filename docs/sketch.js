@@ -8,6 +8,11 @@ var seg7;
 var seg8;
 var groupByClass;
 
+window.onload = function() {
+        $("#small-multiples").hide();
+        $("#editorial").hide();
+}
+
 window.onscroll = function() {scrollState()};
 
 function scrollState() {
@@ -21,18 +26,21 @@ function scrollState() {
 
 
     if (window.pageYOffset >= rep2) { 
-        $("#small-multiples").css("opacity", "1");
-        $("#editorial").css("opacity", "1");
+        $("#small-multiples").show();
+        $("#editorial").show();
+         $("#get-reclass").hide();
         $(".header").css("background-color", "#002D6E");
 
     } else if (window.pageYOffset <= elmnt3.offsetHeight){
-        $("#small-multiples").css("opacity", "0");
-        $("#editorial").css("opacity", "0");
+        $("#small-multiples").hide();
+        $("#editorial").hide();
+        $("#get-reclass").show();
 
     } else if (window.pageYOffset <= elmnt2.offsetHeight){
         $(".header").css("background-color", "#002D6E");
-        $("#small-multiples").css("opacity", "0");
-        $("#editorial").css("opacity", "0");
+        $("#small-multiples").hide();
+        $("#editorial").hide();
+        $("#get-reclass").show();
 
     };
 };
@@ -120,12 +128,9 @@ d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/static/da
     getProfiles();
     getCircles();
 
-    // d3.select("#es")
-    //     .selectAll("li")
-    //     .data(groupByClass)
-    //     .enter()
-    //     .append("li")
-    //     .text(function(d) { return d.key + ": " + d.value});
+    document.getElementById("loading").style.display = "none";
+
+
 });
 
 function getProfiles() {
@@ -889,15 +894,27 @@ function closeNextSteps() {
     document.getElementById("next-steps").style.display = "none";
 }
 
+
+function reclassInfo() {
+    document.getElementById("reclass").style.display = "inline";
+}
+
+function closeReclassInfo() {
+    document.getElementById("reclass").style.display = "none";
+}
+
 function getCircles() {
     d3.select("svg").remove();
 
     d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/data.json", function(json){
 
-    var area=Math.sqrt(200000/Math.PI);
-    var lowCircleR = (groupByClass[0].value/json.length)*area;
-    var highCircleR = (groupByClass[1].value/json.length)*area;
-    var mediumCircleR = (groupByClass[2].value/json.length)*area;
+    var totalRadius=Math.sqrt(json.length/Math.PI)
+    var lowCircleR = (groupByClass[0].value/json.length)*totalRadius;
+    console.log(lowCircleR);
+    var highCircleR = (groupByClass[1].value/json.length)*totalRadius;
+    console.log(highCircleR);
+    var mediumCircleR = (groupByClass[2].value/json.length)*totalRadius;
+    console.log(mediumCircleR);
 
     lowF= json.filter(function(d) { 
     return (d.economic_stability_class == "Low") & (d.gender == "F")
@@ -919,12 +936,16 @@ function getCircles() {
     });
 
     var esCircles = [
-    {"radius": lowCircleR, "color" : "#81BEDB", "x_axis": ".25", "y_axis": ".60", "label": "Low", 
-    "percent": groupByClass[0].value, "movex": "0.1", "movey": "0.2"},
-    {"radius": highCircleR, "color" : "#04316A" , "x_axis": ".4", "y_axis": ".25", "label": "High", 
-    "percent": groupByClass[1].value , "movex": "-0.05", "movey": "-0.1"},
-    {"radius": mediumCircleR, "color" : "#199CDB", "x_axis": ".60", "y_axis": ".50", "label": "Medium", 
-    "percent": groupByClass[2].value , "movex": "-0.18", "movey": "0.2"}];
+    {"radius": "0", "color" : "#064BA3", "x_axis": ".48", "y_axis": ".55", "label": "Book of Business", 
+    "percent": groupByClass[1].value , "movex": ".47", "movey": ".53", "begRadius": totalRadius, "opacity":"1"},
+    {"radius": lowCircleR, "color" : "#81BEDB", "x_axis": ".48", "y_axis": ".5", "label": "", 
+    "percent": groupByClass[0].value, "movex": ".18", "movey": ".5","begRadius": "0", "opacity": "1"},
+    {"radius": highCircleR, "color" : "#04316A" , "x_axis": ".48", "y_axis": ".5", "label": "", 
+    "percent": groupByClass[1].value , "movex": ".47", "movey": ".5","begRadius": "0", "opacity": "1"},
+    {"radius": mediumCircleR, "color" : "#199CDB", "x_axis": ".48", "y_axis": ".5", "label": "", 
+    "percent": groupByClass[2].value , "movex": ".78", "movey": ".5", "begRadius": "0", "opacity": "1"}
+    
+    ];
 
     var svg = d3.select("#vis").append("svg")
         .attr("width", "100%")
@@ -940,12 +961,19 @@ function getCircles() {
 
     /*Create the circle for each block */
     var circle = elemEnter.append("circle")
-        .attr("r", function(d){return d.radius} )
+        .attr("r", function(d){return d.begRadius} )
         .attr("cx", function (d) { return formatPercent(d.x_axis); })
         .attr("cy", function (d) { return formatPercent(d.y_axis); })
         .attr("id", function (d) { return d.label; })
         .style("fill", function(d) { return d.color; })
-        .style("cursor", "pointer")
+        // .style("cursor", "pointer")
+
+    var text = elemEnter.append("text")
+        .text(function (d) { return d.label; })
+        .attr("dx", function (d) { return formatPercent(.415); })
+        .attr("dy", function (d) { return formatPercent(d.y_axis); })
+        .attr("fill", "white")
+        .attr("id", "bob-label")
 
     var node = svg.selectAll("circle");
 
@@ -953,33 +981,46 @@ function getCircles() {
     formatMoney = d3.format("($,.2r");
 
     var t = d3.transition()
-    .duration(2600)
-    .ease(d3.easeBounce);
+    .duration(2000)
+    .ease(d3.easeBack);
 
     function play() {
+        d3.selectAll("circle")
+        .transition(t)
+        .attr("cx", function (d) { return formatPercent(d.movex); })
+        .attr("cy", function (d) { return formatPercent(d.movey); })
+        .attr("r", function(d){return d.radius} )
+        .style("opacity", function(d){return d.opacity} ) 
 
-    d3.selectAll("circle")
-    .transition(t)
-    .attr("cx", function (d) { return formatPercent(d.x_axis - d.movex); })
-    .attr("cy", function (d) { return formatPercent(d.y_axis - d.movey); }) 
-
-
-    d3.select(".details").attr("margin-top:-8%")
-    d3.select("#section1-title").html("Low: " + formatPercent(groupByClass[0].value/json.length)); 
-    d3.select("#section1-percent").html("Females: <em>" + formatPercent(lowF.length/groupByClass[0].value) +
-    "</em><br> Males: <em>" + formatPercent(lowM.length/groupByClass[0].value) + "</em><br>"
-    + "Average Income: <em>" + formatMoney(lowIncomeAvg*1000)+ "</em>"); 
-    d3.select("#section2-title").html("High: " + formatPercent(groupByClass[1].value/json.length)); 
-    d3.select("#section2-percent").html("Females: <em>" + formatPercent(highF.length/groupByClass[1].value)+
-    "</em><br> Males: <em>" + formatPercent(highM.length/groupByClass[1].value) + "</em><br>"
-    + "Average Income: <em>" + formatMoney(highIncomeAvg*1000)+ "</em>"); 
-    d3.select("#section3-title").html("Medium: " + formatPercent(groupByClass[2].value/json.length)); 
-    d3.select("#section3-percent").html("Females: <em>" + formatPercent(medF.length/groupByClass[2].value)+
-    "</em><br> Males: <em>" + formatPercent(medM.length/groupByClass[2].value) + "</em><br>"
-    + "Average Income: <em>" + formatMoney(medIncomeAvg*1000)+ "</em>"); 
     };
 
+    function showText() {
+
+        d3.select(".details").attr("margin-top:-8%")
+        d3.select("#section1-title").html("Low: " + formatPercent(groupByClass[0].value/json.length)); 
+        d3.select("#section1-percent").html("Females: <em>" + formatPercent(lowF.length/groupByClass[0].value) +
+        "</em><br> Males: <em>" + formatPercent(lowM.length/groupByClass[0].value) + "</em><br>"
+        + "Average Income: <em>" + formatMoney(lowIncomeAvg*1000)+ "</em>"); 
+        d3.select("#section2-title").html("High: " + formatPercent(groupByClass[1].value/json.length)); 
+        d3.select("#section2-percent").html("Females: <em>" + formatPercent(highF.length/groupByClass[1].value)+
+        "</em><br> Males: <em>" + formatPercent(highM.length/groupByClass[1].value) + "</em><br>"
+        + "Average Income: <em>" + formatMoney(highIncomeAvg*1000)+ "</em>"); 
+        d3.select("#section3-title").html("Medium: " + formatPercent(groupByClass[2].value/json.length)); 
+        d3.select("#section3-percent").html("Females: <em>" + formatPercent(medF.length/groupByClass[2].value)+
+        "</em><br> Males: <em>" + formatPercent(medM.length/groupByClass[2].value) + "</em><br>"
+        + "Average Income: <em>" + formatMoney(medIncomeAvg*1000)+ "</em>"); 
+    }
+
     play();
+
+     $("#bob-label").delay(500).slideUp(100)
+
+
+    setTimeout(
+      function() 
+      {
+        showText();
+      }, 2000);
 
     var setEvents = circle
     .on( 'click', function() {
