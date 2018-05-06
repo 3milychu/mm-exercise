@@ -5,11 +5,7 @@ Your goal is to build interesting data visualizations for a target audience of a
 
 The visualizations you construct should reveal insights about the data and follow visualization best practices. Best practices include presenting multivariate data, enabling comparisons, and providing descriptive titles and labels.
 
-You will recieve a point for every visualization you construct. 
-
 NOTE: Don’t attempt to build something too complicated. Don’t feel that you need to spend a lot time constructing an interactive dashboard system with interdependent visualizations. Just work towards creating visuals that tell the story within the data, addresses the business problem, and demonstrates your ability to work with the technologies. We would rather receive a complete project, and then talk about how the work could be extended during the onsite interview, rather than have you run out of time attempting something ambitious.
-
-Please feel free to contact the recruiter if you have any questions.
 
 
 ## Getting Started
