@@ -70,6 +70,7 @@ h3 {
   background-position: top left;
   background-color:grey;
   background-blend-mode: multiply;
+
 }
 
 .content {
@@ -85,6 +86,7 @@ h3 {
 }
 
 .content p a:hover {
+	color:white;
 	border-bottom: 2px solid #199CDB;
 }
 
@@ -606,6 +608,10 @@ close:hover {
  		#es {
  			height:100vh;
  		}
+ 		#landing {
+ 			background-size: auto 100%;
+			background position: center center;
+ 		}
  	}
 
 
@@ -617,8 +623,9 @@ close:hover {
  			margin:0%;
  			margin-right:5%;
  		}
- 		#es {
- 			height:100vh;
+ 		#landing {
+ 			background-size: auto 100%;
+			background position: center center;
  		}
  	}
 
@@ -680,14 +687,14 @@ close:hover {
 		transform-origin: 0 0;
 	}
 	.section1, .section2, .section3 {
-		margin:3%;
+		margin:4%;
 		width:20%;
 	}
 	#es a {
 		text-decoration:none;
 	}
 	#bob {
-		font-size:1.5em;
+		font-size:1em;
 	}
 	#es {
 		height:150vh;
@@ -749,7 +756,7 @@ close:hover {
 		margin-left:100%!important;
 	}
 	#reclass {
-		width:130%;
+		width:75vh;
 		height:90%;
 		padding: 5% 10% 10% 15%;
 		margin-top:60%;
@@ -761,7 +768,7 @@ close:hover {
 	}
 	.loading {
 		width:100vh;
-		height:200%
+		height:250%
 	}
 	.loading h1 {
 		font-size:3em;
@@ -781,10 +788,10 @@ close:hover {
  	 		padding-top: 5%;
  	 		font-size:1.2em;
  	 	}
- 	 	svg #bob-label{
- 	 		margin-left:10%;
- 	 	}
  	 	#reclass {
  	 		height:95%;
+ 	 	}
+ 	 	.container h2{
+ 	 		font-size:1.2em;
  	 	}
  	 }
