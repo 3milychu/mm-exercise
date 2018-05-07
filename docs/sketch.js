@@ -7,6 +7,7 @@ var seg6;
 var seg7;
 var seg8;
 var groupByClass;
+var json;
 
 window.onload = function() {
         $("#small-multiples").hide();
@@ -125,8 +126,9 @@ d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/static/da
     return d.insurance_segment_id == 08
     });
 
-    getProfiles();
     getCircles();
+    getProfiles();
+    getArcs();
 
     document.getElementById("loading").style.display = "none";
 
@@ -1056,4 +1058,307 @@ function replay () {
     d3.select("#section3-percent").html(""); 
     d3.select("svg").selectAll("circle").remove();
     getCircles();
+}
+
+function getArcs() {
+
+    total=100000;
+
+    // Seg 1 % of BOB
+    var seg1svg = d3.select(".overlay")
+    .append("svg")
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("id", "seg1bob")
+    .attr("cursor", "pointer")
+    .append("g")
+    .attr("transform", "translate(60,30)");
+
+    var arc1bg = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle(360*Math.PI/180);
+
+    var arc1 = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle((seg1.length/total*360)*Math.PI/180);
+
+    seg1svg.append("path")
+        .attr("class", "arc-bg")
+        .attr("d", arc1bg);
+
+    seg1svg.append("path")
+        .attr("class", "arc")
+        .attr("id", "arc1")
+        .attr("d", arc1);
+
+    seg1svg.append("text")
+        .attr("dx", -10)
+        .attr("dy", 5)
+        .attr("id", "percent-bob")
+        .text(formatPercent(seg1.length/total));
+
+
+        // Seg 2 % of BOB
+    var seg2svg = d3.select(".overlay2")
+    .append("svg")
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("id", "seg2bob")
+    .attr("cursor", "pointer")
+    .append("g")
+    .attr("transform", "translate(60,30)");
+
+    var arc2bg = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle(360*Math.PI/180);
+
+    var arc2 = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle((seg2.length/total*360)*Math.PI/180);
+
+    seg2svg.append("path")
+        .attr("class", "arc-bg")
+        .attr("d", arc2bg);
+
+    seg2svg.append("path")
+        .attr("class", "arc")
+        .attr("id", "arc2")
+        .attr("d", arc2);
+
+    seg2svg.append("text")
+        .attr("dx", -10)
+        .attr("dy", 5)
+        .attr("id", "percent-bob2")
+        .text(formatPercent(seg2.length/total));
+
+    // Seg 3 % of BOB
+    var seg3svg = d3.select(".overlay3")
+    .append("svg")
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("id", "seg3bob")
+    .attr("cursor", "pointer")
+    .append("g")
+    .attr("transform", "translate(60,30)");
+
+    var arc3bg = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle(360*Math.PI/180);
+
+    var arc3 = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle((seg3.length/total*360)*Math.PI/180);
+
+    seg3svg.append("path")
+        .attr("class", "arc-bg")
+        .attr("d", arc3bg);
+
+    seg3svg.append("path")
+        .attr("class", "arc")
+        .attr("id", "arc3")
+        .attr("d", arc3);
+
+    seg3svg.append("text")
+        .attr("dx", -10)
+        .attr("dy", 5)
+        .attr("id", "percent-bob3")
+        .text(formatPercent(seg3.length/total));
+
+    // Seg 4 % of BOB
+    var seg4svg = d3.select(".overlay4")
+    .append("svg")
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("id", "seg4bob")
+    .attr("cursor", "pointer")
+    .append("g")
+    .attr("transform", "translate(60,30)");
+
+    var arc4bg = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle(360*Math.PI/180);
+
+    var arc4 = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle((seg4.length/total*360)*Math.PI/180);
+
+    seg4svg.append("path")
+        .attr("class", "arc-bg")
+        .attr("d", arc4bg);
+
+    seg4svg.append("path")
+        .attr("class", "arc")
+        .attr("id", "arc4")
+        .attr("d", arc4);
+
+    seg4svg.append("text")
+        .attr("dx", -10)
+        .attr("dy", 5)
+        .attr("id", "percent-bob4")
+        .text(formatPercent(seg4.length/total));
+
+ // Seg 5 % of BOB
+    var seg5svg = d3.select(".overlay5")
+    .append("svg")
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("id", "seg5bob")
+    .attr("cursor", "pointer")
+    .append("g")
+    .attr("transform", "translate(60,30)");
+
+    var arc5bg = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle(360*Math.PI/180);
+
+    var arc5 = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle((seg5.length/total*360)*Math.PI/180);
+
+    seg5svg.append("path")
+        .attr("class", "arc-bg")
+        .attr("d", arc5bg);
+
+    seg5svg.append("path")
+        .attr("class", "arc")
+        .attr("id", "arc5")
+        .attr("d", arc5);
+
+    seg5svg.append("text")
+        .attr("dx", -10)
+        .attr("dy", 5)
+        .attr("id", "percent-bob5")
+        .text(formatPercent(seg5.length/total));
+
+
+ // Seg 6 % of BOB
+    var seg6svg = d3.select(".overlay6")
+    .append("svg")
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("id", "seg6bob")
+    .attr("cursor", "pointer")
+    .append("g")
+    .attr("transform", "translate(60,30)");
+
+    var arc6bg = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle(360*Math.PI/180);
+
+    var arc6 = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle((seg6.length/total*360)*Math.PI/180);
+
+    seg6svg.append("path")
+        .attr("class", "arc-bg")
+        .attr("d", arc6bg);
+
+    seg6svg.append("path")
+        .attr("class", "arc")
+        .attr("id", "arc6")
+        .attr("d", arc6);
+
+    seg6svg.append("text")
+        .attr("dx", -10)
+        .attr("dy", 5)
+        .attr("id", "percent-bob6")
+        .text(formatPercent(seg6.length/total));
+
+ // Seg 7 % of BOB
+    var seg7svg = d3.select(".overlay7")
+    .append("svg")
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("id", "seg7bob")
+    .attr("cursor", "pointer")
+    .append("g")
+    .attr("transform", "translate(60,30)");
+
+    var arc7bg = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle(360*Math.PI/180);
+
+    var arc7 = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle((seg7.length/total*360)*Math.PI/180);
+
+    seg7svg.append("path")
+        .attr("class", "arc-bg")
+        .attr("d", arc7bg);
+
+    seg7svg.append("path")
+        .attr("class", "arc")
+        .attr("id", "arc7")
+        .attr("d", arc7);
+
+    seg7svg.append("text")
+        .attr("dx", -10)
+        .attr("dy", 5)
+        .attr("id", "percent-bob7")
+        .text(formatPercent(seg7.length/total));
+ // Seg 8 % of BOB
+    var seg8svg = d3.select(".overlay8")
+    .append("svg")
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("id", "seg8bob")
+    .attr("cursor", "pointer")
+    .append("g")
+    .attr("transform", "translate(60,30)");
+
+    var arc8bg = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle(360*Math.PI/180);
+
+    var arc8 = d3.arc()
+        .innerRadius(18)
+        .outerRadius(20)
+        .startAngle(0)
+        .endAngle((seg8.length/total*360)*Math.PI/180);
+
+    seg8svg.append("path")
+        .attr("class", "arc-bg")
+        .attr("d", arc8bg);
+
+    seg8svg.append("path")
+        .attr("class", "arc")
+        .attr("id", "arc8")
+        .attr("d", arc8);
+
+    seg8svg.append("text")
+        .attr("dx", -10)
+        .attr("dy", 5)
+        .attr("id", "percent-bob8")
+        .text(formatPercent(seg8.length/total));
+
 }

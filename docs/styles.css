@@ -475,13 +475,57 @@ button:hover {
 	display:inline;
 }
 
-svg {
+#seg1bob:hover #percent-bob {
+	display:inline;
+}
+
+#seg2bob:hover #percent-bob2 {
+	display:inline;
+}
+
+#seg3bob:hover #percent-bob3 {
+	display:inline;
+}
+
+#seg4bob:hover #percent-bob4 {
+	display:inline;
+}
+
+#seg5bob:hover #percent-bob5 {
+	display:inline;
+}
+
+#seg6bob:hover #percent-bob6 {
+	display:inline;
+}
+
+#seg7bob:hover #percent-bob7 {
+	display:inline;
+}
+
+#seg8bob:hover #percent-bob8 {
+	display:inline;
+}
+
+.container svg text {
+	display:none;
+	font-size:0.8em;
+	font-weight:900;
+}
+
+#es svg {
 	overflow:visible;
 	transition:0.5s ease;
 }
 
 circle #Low:hover #section1 {
 	background-color:grey;
+}
+
+.container svg {
+	position:absolute;
+	top: 5%;
+	right:2%;
 }
 
 #bob-label {
@@ -502,6 +546,14 @@ circle #Low:hover #section1 {
 .node:not(:hover) .nodetext {
   display: none;
   fill:black;
+}
+
+.arc {
+    fill: #064BA3;
+}
+
+.arc-bg {
+    fill: #d6d4d4;
 }
 
 .details {
@@ -627,14 +679,20 @@ close:hover {
  			background-size: auto 100%;
 			background position: center center;
  		}
+ 		.container svg {
+ 			display:none;
+ 		}
  	}
 
  @media screen and (max-width:700px) {
+ 	.container svg {
+ 			display:none;
+ 		}
  	html {
  		width:100vh;
  		overflow-x:hidden;
  	}
- 	svg {
+ 	#es svg {
  		margin-top:20%;
  		height:30vh;
  	}
