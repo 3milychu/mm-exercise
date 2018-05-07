@@ -602,7 +602,27 @@ close:hover {
 
 }
 
- @media screen and (max-width:1000px) {
+  @media screen and (max-width:1051px) and (min-width:948px){
+ 		#es {
+ 			height:100vh;
+ 		}
+ 	}
+
+
+  @media screen and (max-width:948px) and (min-width:701px){
+ 		.details {
+ 			width:110%;
+ 		}
+ 		.section1, .section2, .section3 {
+ 			margin:0%;
+ 			margin-right:5%;
+ 		}
+ 		#es {
+ 			height:100vh;
+ 		}
+ 	}
+
+ @media screen and (max-width:700px) {
  	html {
  		width:100vh;
  		overflow-x:hidden;
@@ -620,7 +640,7 @@ close:hover {
  	}
  	#landing .content {
  		padding-left:5%;
- 		padding-top:30%;
+ 		padding-top:10%;
  		width:80vh;
  	}
  	.image1, .image2, .image3, .image4, .image5, .image6, .image7, .image8 {
@@ -685,21 +705,17 @@ close:hover {
 		
 	}
 	.next {
-		width:80vh;
-		height:80%;
-		margin-left:0%;
-		margin-top:0%;
+		width:85vh;
+		height:100%;
+		left:10%;
+		margin-top:-0.5%;
 	}
 	.next button {
 		margin-top:15%;
 	}
-	#next-steps {
-		margin-left:5%;
-	}
-
 	#next-steps .content {
 		width:60%;
-		margin-top:-12%;
+		margin-top:-10%;
 		white-space: pre-line;
 		font-size:1.4em;
 	}
@@ -734,7 +750,7 @@ close:hover {
 	}
 	#reclass {
 		width:130%;
-		height:80%;
+		height:90%;
 		padding: 5% 10% 10% 15%;
 		margin-top:60%;
 		font-size:1.2em;
@@ -753,3 +769,22 @@ close:hover {
 		margin-top:70%;
 	}
  	}
+
+ 	 @media screen and (max-width:320px) {
+ 	 	#es {
+ 	 		height:200vh;
+ 	 	}
+ 	 	#landing {
+ 	 		height:150vh;
+ 	 	}
+ 	 	#landing .content {
+ 	 		padding-top: 5%;
+ 	 		font-size:1.2em;
+ 	 	}
+ 	 	svg #bob-label{
+ 	 		margin-left:10%;
+ 	 	}
+ 	 	#reclass {
+ 	 		height:95%;
+ 	 	}
+ 	 }
