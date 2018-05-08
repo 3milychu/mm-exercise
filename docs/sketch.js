@@ -7,8 +7,8 @@ var seg6;
 var seg7;
 var seg8;
 var groupByClass;
-var json;
 
+// Populate nav based on scroll position
 window.onload = function() {
         $("#small-multiples").hide();
         $("#editorial").hide();
@@ -46,6 +46,7 @@ function scrollState() {
     };
 };
 
+// Main function 
 d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/static/data.json", function(json){
         
     json.forEach(function(d) {
@@ -132,9 +133,9 @@ d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/static/da
 
     document.getElementById("loading").style.display = "none";
 
-
 });
 
+// Populate #signatures container
 function getProfiles() {
 
     // Begin Profile 1
@@ -876,169 +877,7 @@ function getProfiles() {
         .text("Deep Dive")
 }
 
-function smallMultiples() {
-    for (i=1;i<9;i++){
-    document.getElementById("overlay"+[i]).style.opacity="0.9";
-    }
-}
-
-function editorial() {
-    for (i=1;i<9;i++){
-    document.getElementById("overlay"+[i]).style.opacity="";
-    }
-}
-
-function nextSteps() {
-    document.getElementById("next-steps").style.display = "inline";
-}
-
-function closeNextSteps() {
-    document.getElementById("next-steps").style.display = "none";
-}
-
-
-function reclassInfo() {
-    document.getElementById("reclass").style.display = "inline";
-}
-
-function closeReclassInfo() {
-    document.getElementById("reclass").style.display = "none";
-}
-
-function getCircles() {
-    d3.select("svg").remove();
-
-    d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/static/data.json", function(json){
-
-    var totalRadius=Math.sqrt((json.length)/Math.PI);
-    console.log("The area of circle BOB: "+ Math.PI*Math.pow(totalRadius,2));
-    var lowCircleR = Math.sqrt((groupByClass[0].value/json.length)*json.length/Math.PI);
-    console.log("The area of circle Low: "+ Math.PI*Math.pow(lowCircleR,2));
-    var highCircleR = Math.sqrt((groupByClass[1].value/json.length)*json.length/Math.PI);
-    console.log("The area of circle High: "+ Math.PI*Math.pow(highCircleR,2));
-    var mediumCircleR = Math.sqrt((groupByClass[2].value/json.length)*json.length/Math.PI);
-    console.log("The area of circle Medium: "+ Math.PI*Math.pow(mediumCircleR,2));
-
-    lowF= json.filter(function(d) { 
-    return (d.economic_stability_class == "Low") & (d.gender == "F")
-    });
-    lowM= json.filter(function(d) { 
-    return (d.economic_stability_class == "Low") & (d.gender == "M")
-    });
-    medF= json.filter(function(d) { 
-    return (d.economic_stability_class == "Medium") & (d.gender == "F")
-    });
-    medM= json.filter(function(d) { 
-    return (d.economic_stability_class == "Medium") & (d.gender == "M")
-    });
-    highF= json.filter(function(d) { 
-    return (d.economic_stability_class == "High") & (d.gender == "F")
-    });
-    highM= json.filter(function(d) { 
-    return (d.economic_stability_class == "High") & (d.gender == "M")
-    });
-
-    var esCircles = [
-    {"radius": "10", "color" : "#064BA3", "x_axis": ".48", "y_axis": ".55", "label": "Book of Business", 
-    "percent": groupByClass[1].value , "movex": ".47", "movey": ".53", "begRadius": totalRadius, "opacity":"1"},
-    {"radius": lowCircleR, "color" : "#81BEDB", "x_axis": ".48", "y_axis": ".65", "label": "", 
-    "percent": groupByClass[0].value, "movex": ".18", "movey": ".5","begRadius": "10", "opacity": "1"},
-    {"radius": highCircleR, "color" : "#04316A" , "x_axis": ".48", "y_axis": ".35", "label": "", 
-    "percent": groupByClass[1].value , "movex": ".47", "movey": ".5","begRadius": "10", "opacity": "1"},
-    {"radius": mediumCircleR, "color" : "#199CDB", "x_axis": ".48", "y_axis": ".25", "label": "", 
-    "percent": groupByClass[2].value , "movex": ".78", "movey": ".5", "begRadius": "10", "opacity": "1"}
-    
-    ];
-
-    var svg = d3.select("#vis").append("svg")
-        .attr("width", "100%")
-        .attr("height", "50vh");
-
-    var elem = svg.selectAll("g")
-        .data(esCircles)
-
-    /*Create and place the "blocks" containing the circle and the text */  
-    var elemEnter = elem.enter()
-        .append("g")
-        .attr("class", "node")
-
-    /*Create the circle for each block */
-    var circle = elemEnter.append("circle")
-        .attr("r", function(d){return d.begRadius} )
-        .attr("cx", function (d) { return formatPercent(d.x_axis); })
-        .attr("cy", function (d) { return formatPercent(d.y_axis); })
-        .attr("id", function (d) { return d.label; })
-        .style("fill", function(d) { return d.color; })
-        // .style("cursor", "pointer")
-
-    var text = elemEnter.append("text")
-        .text(function (d) { return d.label; })
-        .attr("dx", function (d) { return formatPercent(.415); })
-        .attr("dy", function (d) { return formatPercent(d.y_axis); })
-        .attr("fill", "white")
-        .attr("id", "bob-label")
-
-    var node = svg.selectAll("circle");
-
-    formatDecimal = d3.format(".2s");
-    formatMoney = d3.format("($,.2r");
-
-    var t = d3.transition()
-    .duration(2000)
-    .ease(d3.easeBack);
-
-    function play() {
-        d3.selectAll("circle")
-        .transition(t)
-        .attr("cx", function (d) { return formatPercent(d.movex); })
-        .attr("cy", function (d) { return formatPercent(d.movey); })
-        .attr("r", function(d){return d.radius} )
-        .style("opacity", function(d){return d.opacity} ) 
-
-    };
-
-    function showText() {
-
-        d3.select(".details").attr("margin-top:-8%")
-        d3.select("#section1-title").html("Low: " + formatPercent(groupByClass[0].value/json.length)); 
-        d3.select("#section1-percent").html("Females: <em>" + formatPercent(lowF.length/groupByClass[0].value) +
-        "</em><br> Males: <em>" + formatPercent(lowM.length/groupByClass[0].value) + "</em><br>"
-        + "Average Income: <em>" + formatMoney(lowIncomeAvg*1000)+ "</em>"); 
-        d3.select("#section2-title").html("High: " + formatPercent(groupByClass[1].value/json.length)); 
-        d3.select("#section2-percent").html("Females: <em>" + formatPercent(highF.length/groupByClass[1].value)+
-        "</em><br> Males: <em>" + formatPercent(highM.length/groupByClass[1].value) + "</em><br>"
-        + "Average Income: <em>" + formatMoney(highIncomeAvg*1000)+ "</em>"); 
-        d3.select("#section3-title").html("Medium: " + formatPercent(groupByClass[2].value/json.length)); 
-        d3.select("#section3-percent").html("Females: <em>" + formatPercent(medF.length/groupByClass[2].value)+
-        "</em><br> Males: <em>" + formatPercent(medM.length/groupByClass[2].value) + "</em><br>"
-        + "Average Income: <em>" + formatMoney(medIncomeAvg*1000)+ "</em>"); 
-    }
-
-    play();
-
-     $("#bob-label").delay(500).slideUp(100)
-
-    setTimeout(
-      function() 
-      {
-        showText();
-      }, 2000);
-
-    });
-}
-
-function replay () {
-    d3.select(".details").attr("margin-top:-5%")
-    d3.select("#section1-title").html(""); 
-    d3.select("#section1-percent").html(""); 
-    d3.select("#section2-title").html(""); 
-    d3.select("#section2-percent").html(""); 
-    d3.select("#section3-title").html(""); 
-    d3.select("#section3-percent").html(""); 
-    d3.select("svg").selectAll("circle").remove();
-    getCircles();
-}
-
+// get % of bob for each segment
 function getArcs() {
 
     total=100000;
@@ -1391,6 +1230,175 @@ function getArcs() {
         .attr("dx", -30)
         .attr("dy", 45)
         .text("% of BOB");
+}
+
+// Turn on small multiple view
+function smallMultiples() {
+    for (i=1;i<9;i++){
+    document.getElementById("overlay"+[i]).style.opacity="0.9";
+    }
+}
+
+// Turn back on default view
+function editorial() {
+    for (i=1;i<9;i++){
+    document.getElementById("overlay"+[i]).style.opacity="";
+    }
+}
+
+// Turn on next steps lightbox
+function nextSteps() {
+    document.getElementById("next-steps").style.display = "inline";
+}
+
+// Close next steps lightbox
+function closeNextSteps() {
+    document.getElementById("next-steps").style.display = "none";
+}
+
+// Open reclass info
+function reclassInfo() {
+    document.getElementById("reclass").style.display = "inline";
+}
+
+// Close reclass info
+function closeReclassInfo() {
+    document.getElementById("reclass").style.display = "none";
+}
 
 
+// Populate book of business canvas
+function getCircles() {
+    d3.select("svg").remove();
+
+    d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/static/data.json", function(json){
+
+    var totalRadius=Math.sqrt((json.length)/Math.PI);
+    console.log("The area of circle BOB: "+ Math.PI*Math.pow(totalRadius,2));
+    var lowCircleR = Math.sqrt((groupByClass[0].value/json.length)*json.length/Math.PI);
+    console.log("The area of circle Low: "+ Math.PI*Math.pow(lowCircleR,2));
+    var highCircleR = Math.sqrt((groupByClass[1].value/json.length)*json.length/Math.PI);
+    console.log("The area of circle High: "+ Math.PI*Math.pow(highCircleR,2));
+    var mediumCircleR = Math.sqrt((groupByClass[2].value/json.length)*json.length/Math.PI);
+    console.log("The area of circle Medium: "+ Math.PI*Math.pow(mediumCircleR,2));
+
+    lowF= json.filter(function(d) { 
+    return (d.economic_stability_class == "Low") & (d.gender == "F")
+    });
+    lowM= json.filter(function(d) { 
+    return (d.economic_stability_class == "Low") & (d.gender == "M")
+    });
+    medF= json.filter(function(d) { 
+    return (d.economic_stability_class == "Medium") & (d.gender == "F")
+    });
+    medM= json.filter(function(d) { 
+    return (d.economic_stability_class == "Medium") & (d.gender == "M")
+    });
+    highF= json.filter(function(d) { 
+    return (d.economic_stability_class == "High") & (d.gender == "F")
+    });
+    highM= json.filter(function(d) { 
+    return (d.economic_stability_class == "High") & (d.gender == "M")
+    });
+
+    var esCircles = [
+    {"radius": "10", "color" : "#064BA3", "x_axis": ".48", "y_axis": ".55", "label": "Book of Business", 
+    "percent": groupByClass[1].value , "movex": ".47", "movey": ".53", "begRadius": totalRadius, "opacity":"1"},
+    {"radius": lowCircleR, "color" : "#81BEDB", "x_axis": ".48", "y_axis": ".65", "label": "", 
+    "percent": groupByClass[0].value, "movex": ".18", "movey": ".5","begRadius": "10", "opacity": "1"},
+    {"radius": highCircleR, "color" : "#04316A" , "x_axis": ".48", "y_axis": ".35", "label": "", 
+    "percent": groupByClass[1].value , "movex": ".47", "movey": ".5","begRadius": "10", "opacity": "1"},
+    {"radius": mediumCircleR, "color" : "#199CDB", "x_axis": ".48", "y_axis": ".25", "label": "", 
+    "percent": groupByClass[2].value , "movex": ".78", "movey": ".5", "begRadius": "10", "opacity": "1"}
+    
+    ];
+
+    var svg = d3.select("#vis").append("svg")
+        .attr("width", "100%")
+        .attr("height", "50vh");
+
+    var elem = svg.selectAll("g")
+        .data(esCircles)
+
+    /*Create and place the "blocks" containing the circle and the text */  
+    var elemEnter = elem.enter()
+        .append("g")
+        .attr("class", "node")
+
+    /*Create the circle for each block */
+    var circle = elemEnter.append("circle")
+        .attr("r", function(d){return d.begRadius} )
+        .attr("cx", function (d) { return formatPercent(d.x_axis); })
+        .attr("cy", function (d) { return formatPercent(d.y_axis); })
+        .attr("id", function (d) { return d.label; })
+        .style("fill", function(d) { return d.color; })
+        // .style("cursor", "pointer")
+
+    var text = elemEnter.append("text")
+        .text(function (d) { return d.label; })
+        .attr("dx", function (d) { return formatPercent(.415); })
+        .attr("dy", function (d) { return formatPercent(d.y_axis); })
+        .attr("fill", "white")
+        .attr("id", "bob-label")
+
+    var node = svg.selectAll("circle");
+
+    formatDecimal = d3.format(".2s");
+    formatMoney = d3.format("($,.2r");
+
+    var t = d3.transition()
+    .duration(2000)
+    .ease(d3.easeBack);
+
+    function play() {
+        d3.selectAll("circle")
+        .transition(t)
+        .attr("cx", function (d) { return formatPercent(d.movex); })
+        .attr("cy", function (d) { return formatPercent(d.movey); })
+        .attr("r", function(d){return d.radius} )
+        .style("opacity", function(d){return d.opacity} ) 
+
+    };
+
+    function showText() {
+
+        d3.select(".details").attr("margin-top:-8%")
+        d3.select("#section1-title").html("Low: " + formatPercent(groupByClass[0].value/json.length)); 
+        d3.select("#section1-percent").html("Females: <em>" + formatPercent(lowF.length/groupByClass[0].value) +
+        "</em><br> Males: <em>" + formatPercent(lowM.length/groupByClass[0].value) + "</em><br>"
+        + "Average Income: <em>" + formatMoney(lowIncomeAvg*1000)+ "</em>"); 
+        d3.select("#section2-title").html("High: " + formatPercent(groupByClass[1].value/json.length)); 
+        d3.select("#section2-percent").html("Females: <em>" + formatPercent(highF.length/groupByClass[1].value)+
+        "</em><br> Males: <em>" + formatPercent(highM.length/groupByClass[1].value) + "</em><br>"
+        + "Average Income: <em>" + formatMoney(highIncomeAvg*1000)+ "</em>"); 
+        d3.select("#section3-title").html("Medium: " + formatPercent(groupByClass[2].value/json.length)); 
+        d3.select("#section3-percent").html("Females: <em>" + formatPercent(medF.length/groupByClass[2].value)+
+        "</em><br> Males: <em>" + formatPercent(medM.length/groupByClass[2].value) + "</em><br>"
+        + "Average Income: <em>" + formatMoney(medIncomeAvg*1000)+ "</em>"); 
+    }
+
+    play();
+
+     $("#bob-label").delay(500).slideUp(100)
+
+    setTimeout(
+      function() 
+      {
+        showText();
+      }, 2000);
+
+    });
+}
+
+// replay book of business animation
+function replay () {
+    d3.select(".details").attr("margin-top:-5%")
+    d3.select("#section1-title").html(""); 
+    d3.select("#section1-percent").html(""); 
+    d3.select("#section2-title").html(""); 
+    d3.select("#section2-percent").html(""); 
+    d3.select("#section3-title").html(""); 
+    d3.select("#section3-percent").html(""); 
+    d3.select("svg").selectAll("circle").remove();
+    getCircles();
 }
