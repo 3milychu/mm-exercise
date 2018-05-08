@@ -26,6 +26,12 @@ summary(regression_1)
 # chi square for race by segment
 options(scipen = 999)
 library(gmodels)
-CrossTable(data$race, data$insurance_segment_id)
+CrossTable(data$insurance_segment_id,data$race)
+```
+```{r}
+# chi square for race by segment
+options(scipen = 999)
+library(gmodels)
+CrossTable(data$insurance_segment_id,data$gender)
 ```
 

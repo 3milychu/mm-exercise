@@ -712,6 +712,9 @@ close:hover {
  		.container svg {
  			display:none;
  		}
+ 		#es {
+ 			height:100vh;
+ 		}
  	}
 
  @media screen and (max-width:700px) {
