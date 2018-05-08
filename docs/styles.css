@@ -690,7 +690,7 @@ close:hover {
   	.overlay h1, .overlay2 h1, .overlay3 h1,
 	.overlay4 h1, .overlay5 h1, .overlay6 h1,
 	.overlay6 h1, .overlay7 h1, .overlay8 h1{
-		width:60%;
+		width:40%;
 	}
 	.overlay button, .overlay1 button, .overlay2 button, .overlay3 button,
 	.overlay4 button, .overlay5 button, .overlay6 button, .overlay7 button,
