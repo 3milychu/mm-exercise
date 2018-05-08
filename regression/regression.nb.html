@@ -231,12 +231,101 @@ F-statistic:  1803 on 7 and 99992 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>Education</li>
 <li>Facebook User Rank</li>
 <li>Race</li>
-<li>Youtube User Rank</li>
+<li>Youtube User</li>
 </ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjaGkgc3F1YXJlIGZvciByYWNlIGJ5IHNlZ21lbnRcbm9wdGlvbnMoc2NpcGVuID0gOTk5KVxubGlicmFyeShnbW9kZWxzKVxuQ3Jvc3NUYWJsZShkYXRhJHJhY2UsIGRhdGEkaW5zdXJhbmNlX3NlZ21lbnRfaWQpXG5gYGAifQ== -->
+<pre class="r"><code># chi square for race by segment
+options(scipen = 999)
+library(gmodels)
+CrossTable(data$race, data$insurance_segment_id)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG4gXG4gICBDZWxsIENvbnRlbnRzXG58LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLXxcbnwgICAgICAgICAgICAgICAgICAgICAgIE4gfFxufCBDaGktc3F1YXJlIGNvbnRyaWJ1dGlvbiB8XG58ICAgICAgICAgICBOIC8gUm93IFRvdGFsIHxcbnwgICAgICAgICAgIE4gLyBDb2wgVG90YWwgfFxufCAgICAgICAgIE4gLyBUYWJsZSBUb3RhbCB8XG58LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLXxcblxuIFxuVG90YWwgT2JzZXJ2YXRpb25zIGluIFRhYmxlOiAgMTAwMDAwIFxuXG4gXG4gICAgICAgICAgICAgICAgfCBkYXRhJGluc3VyYW5jZV9zZWdtZW50X2lkIFxuICAgICAgZGF0YSRyYWNlIHwgICAgICAgICAxIHwgICAgICAgICAyIHwgICAgICAgICAzIHwgICAgICAgICA0IHwgICAgICAgICA1IHwgICAgICAgICA2IHwgICAgICAgICA3IHwgICAgICAgICA4IHwgUm93IFRvdGFsIHwgXG4tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfFxuQW1lcmljYW4gSW5kaWFuIHwgICAgICAgIDQxIHwgICAgICAgIDI4IHwgICAgICAgIDM4IHwgICAgICAgIDI3IHwgICAgICAgIDczIHwgICAgICAgIDQ3IHwgICAgICAgIDU4IHwgICAgICAgIDMwIHwgICAgICAgMzQyIHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMy45NzkgfCAgICAgMC42NDMgfCAgICAgNi43MjggfCAgICAgMC4wMTAgfCAgICA1Ni4xMjEgfCAgICAgMS41MzUgfCAgICAxOS44NDcgfCAgICAgNS4zMDYgfCAgICAgICAgICAgfCBcbiAgICAgICAgICAgICAgICB8ICAgICAwLjEyMCB8ICAgICAwLjA4MiB8ICAgICAwLjExMSB8ICAgICAwLjA3OSB8ICAgICAwLjIxMyB8ICAgICAwLjEzNyB8ICAgICAwLjE3MCB8ICAgICAwLjA4OCB8ICAgICAwLjAwMyB8IFxuICAgICAgICAgICAgICAgIHwgICAgIDAuMDAzIHwgICAgIDAuMDA0IHwgICAgIDAuMDA1IHwgICAgIDAuMDAzIHwgICAgIDAuMDA4IHwgICAgIDAuMDAzIHwgICAgIDAuMDAyIHwgICAgIDAuMDA1IHwgICAgICAgICAgIHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDEgfCAgICAgMC4wMDAgfCAgICAgMC4wMDEgfCAgICAgMC4wMDAgfCAgICAgICAgICAgfCBcbi0tLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18XG4gICAgICAgICAgQXNpYW4gfCAgICAgICAxMzAgfCAgICAgICAxMTMgfCAgICAgICAxMjYgfCAgICAgICAxMjAgfCAgICAgICAgNzMgfCAgICAgICAzMTkgfCAgICAgICA1MzMgfCAgICAgICAgNjUgfCAgICAgIDE0NzkgfCBcbiAgICAgICAgICAgICAgICB8ICAgIDUxLjcwNCB8ICAgICAwLjc2NSB8ICAgICAyLjkyMiB8ICAgICAwLjI1OSB8ICAgIDI4LjM0MCB8ICAgIDIzLjQ0MCB8ICAgIDE2LjcwOSB8ICAgICA0Ljg5NyB8ICAgICAgICAgICB8IFxuICAgICAgICAgICAgICAgIHwgICAgIDAuMDg4IHwgICAgIDAuMDc2IHwgICAgIDAuMDg1IHwgICAgIDAuMDgxIHwgICAgIDAuMDQ5IHwgICAgIDAuMjE2IHwgICAgIDAuMzYwIHwgICAgIDAuMDQ0IHwgICAgIDAuMDE1IHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMC4wMDggfCAgICAgMC4wMTYgfCAgICAgMC4wMTcgfCAgICAgMC4wMTUgfCAgICAgMC4wMDggfCAgICAgMC4wMTkgfCAgICAgMC4wMTggfCAgICAgMC4wMTEgfCAgICAgICAgICAgfCBcbiAgICAgICAgICAgICAgICB8ICAgICAwLjAwMSB8ICAgICAwLjAwMSB8ICAgICAwLjAwMSB8ICAgICAwLjAwMSB8ICAgICAwLjAwMSB8ICAgICAwLjAwMyB8ICAgICAwLjAwNSB8ICAgICAwLjAwMSB8ICAgICAgICAgICB8IFxuLS0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXxcbiAgICAgICAgICBCbGFjayB8ICAgICAgMTY1NCB8ICAgICAgMTg2NSB8ICAgICAgMTI0MCB8ICAgICAgMTM4MyB8ICAgICAgMTMyMyB8ICAgICAgMTI5NiB8ICAgICAgMzU4NSB8ICAgICAgMTEyMiB8ICAgICAxMzQ2OCB8IFxuICAgICAgICAgICAgICAgIHwgICAxMzYuMzg2IHwgICA4ODcuNzUxIHwgICAgNjUuNzUwIHwgICAxMTAuNzYxIHwgICAgIDcuNDEyIHwgICAzODIuNTg2IHwgICAgNTcuMTA5IHwgICAxNTEuOTA3IHwgICAgICAgICAgIHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMC4xMjMgfCAgICAgMC4xMzggfCAgICAgMC4wOTIgfCAgICAgMC4xMDMgfCAgICAgMC4wOTggfCAgICAgMC4wOTYgfCAgICAgMC4yNjYgfCAgICAgMC4wODMgfCAgICAgMC4xMzUgfCBcbiAgICAgICAgICAgICAgICB8ICAgICAwLjEwMSB8ICAgICAwLjI2NSB8ICAgICAwLjE2OSB8ICAgICAwLjE3OSB8ICAgICAwLjE0NSB8ICAgICAwLjA3OSB8ICAgICAwLjExOSB8ICAgICAwLjE5NCB8ICAgICAgICAgICB8IFxuICAgICAgICAgICAgICAgIHwgICAgIDAuMDE3IHwgICAgIDAuMDE5IHwgICAgIDAuMDEyIHwgICAgIDAuMDE0IHwgICAgIDAuMDEzIHwgICAgIDAuMDEzIHwgICAgIDAuMDM2IHwgICAgIDAuMDExIHwgICAgICAgICAgIHwgXG4tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfFxuICAgICAgICBDaGluZXNlIHwgICAgICAgIDk4IHwgICAgICAgIDQ1IHwgICAgICAgIDM1IHwgICAgICAgIDM3IHwgICAgICAgIDEzIHwgICAgICAgMjYzIHwgICAgICAgMzYxIHwgICAgICAgIDI0IHwgICAgICAgODc2IHwgXG4gICAgICAgICAgICAgICAgfCAgICAxNC4yODEgfCAgICAgNC40OTQgfCAgICAxMy4yMDkgfCAgICAxNC4wMjQgfCAgICA1NS45NjQgfCAgICA5Ny44NzggfCAgICAzNS4xODUgfCAgICAxMy45OTUgfCAgICAgICAgICAgfCBcbiAgICAgICAgICAgICAgICB8ICAgICAwLjExMiB8ICAgICAwLjA1MSB8ICAgICAwLjA0MCB8ICAgICAwLjA0MiB8ICAgICAwLjAxNSB8ICAgICAwLjMwMCB8ICAgICAwLjQxMiB8ICAgICAwLjAyNyB8ICAgICAwLjAwOSB8IFxuICAgICAgICAgICAgICAgIHwgICAgIDAuMDA2IHwgICAgIDAuMDA2IHwgICAgIDAuMDA1IHwgICAgIDAuMDA1IHwgICAgIDAuMDAxIHwgICAgIDAuMDE2IHwgICAgIDAuMDEyIHwgICAgIDAuMDA0IHwgICAgICAgICAgIHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMC4wMDEgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDMgfCAgICAgMC4wMDQgfCAgICAgMC4wMDAgfCAgICAgICAgICAgfCBcbi0tLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18XG4gICAgICAgSGlzcGFuaWMgfCAgICAgIDE0NTIgfCAgICAgIDExMDEgfCAgICAgICA3MDUgfCAgICAgICA5OTMgfCAgICAgICA1NTAgfCAgICAgIDE1NTggfCAgICAgIDM1ODQgfCAgICAgICA3MzMgfCAgICAgMTA2NzYgfCBcbiAgICAgICAgICAgICAgICB8ICAgIDQ5LjM1OSB8ICAgMTYyLjgwNiB8ICAgICA3LjQyNiB8ICAgIDMzLjM4NCB8ICAgMTgzLjk3NCB8ICAgIDIyLjYxOSB8ICAgIDQwLjIzOCB8ICAgIDIxLjg2NyB8ICAgICAgICAgICB8IFxuICAgICAgICAgICAgICAgIHwgICAgIDAuMTM2IHwgICAgIDAuMTAzIHwgICAgIDAuMDY2IHwgICAgIDAuMDkzIHwgICAgIDAuMDUyIHwgICAgIDAuMTQ2IHwgICAgIDAuMzM2IHwgICAgIDAuMDY5IHwgICAgIDAuMTA3IHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMC4wODkgfCAgICAgMC4xNTYgfCAgICAgMC4wOTYgfCAgICAgMC4xMjggfCAgICAgMC4wNjAgfCAgICAgMC4wOTUgfCAgICAgMC4xMTkgfCAgICAgMC4xMjcgfCAgICAgICAgICAgfCBcbiAgICAgICAgICAgICAgICB8ICAgICAwLjAxNSB8ICAgICAwLjAxMSB8ICAgICAwLjAwNyB8ICAgICAwLjAxMCB8ICAgICAwLjAwNSB8ICAgICAwLjAxNiB8ICAgICAwLjAzNiB8ICAgICAwLjAwNyB8ICAgICAgICAgICB8IFxuLS0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXxcbiAgICAgICBKYXBhbmVzZSB8ICAgICAgICAzMSB8ICAgICAgICAxOCB8ICAgICAgICAgOCB8ICAgICAgICAxMCB8ICAgICAgICAgMiB8ICAgICAgICA0MyB8ICAgICAgICA0NyB8ICAgICAgICAgNyB8ICAgICAgIDE2NiB8IFxuICAgICAgICAgICAgICAgIHwgICAgIDAuNTQ5IHwgICAgIDMuNDE4IHwgICAgIDEuNDE1IHwgICAgIDAuNjM1IHwgICAgMTEuMzk1IHwgICAgIDguOTkyIHwgICAgIDAuMTk1IHwgICAgIDAuNzAwIHwgICAgICAgICAgIHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMC4xODcgfCAgICAgMC4xMDggfCAgICAgMC4wNDggfCAgICAgMC4wNjAgfCAgICAgMC4wMTIgfCAgICAgMC4yNTkgfCAgICAgMC4yODMgfCAgICAgMC4wNDIgfCAgICAgMC4wMDIgfCBcbiAgICAgICAgICAgICAgICB8ICAgICAwLjAwMiB8ICAgICAwLjAwMyB8ICAgICAwLjAwMSB8ICAgICAwLjAwMSB8ICAgICAwLjAwMCB8ICAgICAwLjAwMyB8ICAgICAwLjAwMiB8ICAgICAwLjAwMSB8ICAgICAgICAgICB8IFxuICAgICAgICAgICAgICAgIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgICAgICAgICAgIHwgXG4tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfFxuICAgICAgICAgIE90aGVyIHwgICAgICA2MTA0IHwgICAgICAxNDEyIHwgICAgICAxNDA5IHwgICAgICAxNDc0IHwgICAgICAxNDcxIHwgICAgICA1MTQ3IHwgICAgICA4NDY4IHwgICAgICAxNDI3IHwgICAgIDI2OTEyIHwgXG4gICAgICAgICAgICAgICAgfCAgIDY1OS44MDkgfCAgIDEyMi41NzMgfCAgIDE1OS4zNDIgfCAgIDE3OC43MTggfCAgIDM5My4xMzkgfCAgIDExNi4wNTMgfCAgICAxNC4zNDEgfCAgICAxMC41MzIgfCAgICAgICAgICAgfCBcbiAgICAgICAgICAgICAgICB8ICAgICAwLjIyNyB8ICAgICAwLjA1MiB8ICAgICAwLjA1MiB8ICAgICAwLjA1NSB8ICAgICAwLjA1NSB8ICAgICAwLjE5MSB8ICAgICAwLjMxNSB8ICAgICAwLjA1MyB8ICAgICAwLjI2OSB8IFxuICAgICAgICAgICAgICAgIHwgICAgIDAuMzczIHwgICAgIDAuMjAxIHwgICAgIDAuMTkzIHwgICAgIDAuMTkwIHwgICAgIDAuMTYxIHwgICAgIDAuMzEzIHwgICAgIDAuMjgwIHwgICAgIDAuMjQ3IHwgICAgICAgICAgIHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMC4wNjEgfCAgICAgMC4wMTQgfCAgICAgMC4wMTQgfCAgICAgMC4wMTUgfCAgICAgMC4wMTUgfCAgICAgMC4wNTEgfCAgICAgMC4wODUgfCAgICAgMC4wMTQgfCAgICAgICAgICAgfCBcbi0tLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18XG4gICAgIFBvcnR1Z3Vlc2UgfCAgICAgICAgIDAgfCAgICAgICAgIDAgfCAgICAgICAgIDAgfCAgICAgICAgIDEgfCAgICAgICAgIDAgfCAgICAgICAgIDAgfCAgICAgICAgIDMgfCAgICAgICAgIDAgfCAgICAgICAgIDQgfCBcbiAgICAgICAgICAgICAgICB8ICAgICAwLjY1NCB8ICAgICAwLjI4MSB8ICAgICAwLjI5MyB8ICAgICAxLjUzOCB8ICAgICAwLjM2NSB8ICAgICAwLjY1OCB8ICAgICAyLjY1OSB8ICAgICAwLjIzMSB8ICAgICAgICAgICB8IFxuICAgICAgICAgICAgICAgIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgICAgIDAuMjUwIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgICAgIDAuNzUwIHwgICAgIDAuMDAwIHwgICAgIDAuMDAwIHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgMC4wMDAgfCAgICAgICAgICAgfCBcbiAgICAgICAgICAgICAgICB8ICAgICAwLjAwMCB8ICAgICAwLjAwMCB8ICAgICAwLjAwMCB8ICAgICAwLjAwMCB8ICAgICAwLjAwMCB8ICAgICAwLjAwMCB8ICAgICAwLjAwMCB8ICAgICAwLjAwMCB8ICAgICAgICAgICB8IFxuLS0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXwtLS0tLS0tLS0tLXxcbiAgICAgICAgICBXaGl0ZSB8ICAgICAgNjg0MCB8ICAgICAgMjQ1NSB8ICAgICAgMzc1NiB8ICAgICAgMzcwMCB8ICAgICAgNTYxMCB8ICAgICAgNzc4OCB8ICAgICAxMzU1OCB8ICAgICAgMjM3MCB8ICAgICA0NjA3NyB8IFxuICAgICAgICAgICAgICAgIHwgICAgNjMuODU2IHwgICAxOTEuMjMyIHwgICAgNDMuODYxIHwgICAgIDQuODM0IHwgICA0NzMuNDIxIHwgICAgIDUuNDQ3IHwgICAgIDkuMTAyIHwgICAgMzIuMDk4IHwgICAgICAgICAgIHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMC4xNDggfCAgICAgMC4wNTMgfCAgICAgMC4wODIgfCAgICAgMC4wODAgfCAgICAgMC4xMjIgfCAgICAgMC4xNjkgfCAgICAgMC4yOTQgfCAgICAgMC4wNTEgfCAgICAgMC40NjEgfCBcbiAgICAgICAgICAgICAgICB8ICAgICAwLjQxOCB8ICAgICAwLjM0OSB8ICAgICAwLjUxMyB8ICAgICAwLjQ3OCB8ICAgICAwLjYxNSB8ICAgICAwLjQ3MyB8ICAgICAwLjQ0OSB8ICAgICAwLjQxMCB8ICAgICAgICAgICB8IFxuICAgICAgICAgICAgICAgIHwgICAgIDAuMDY4IHwgICAgIDAuMDI1IHwgICAgIDAuMDM4IHwgICAgIDAuMDM3IHwgICAgIDAuMDU2IHwgICAgIDAuMDc4IHwgICAgIDAuMTM2IHwgICAgIDAuMDI0IHwgICAgICAgICAgIHwgXG4tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tfFxuICAgQ29sdW1uIFRvdGFsIHwgICAgIDE2MzUwIHwgICAgICA3MDM3IHwgICAgICA3MzE3IHwgICAgICA3NzQ1IHwgICAgICA5MTE1IHwgICAgIDE2NDYxIHwgICAgIDMwMTk3IHwgICAgICA1Nzc4IHwgICAgMTAwMDAwIHwgXG4gICAgICAgICAgICAgICAgfCAgICAgMC4xNjQgfCAgICAgMC4wNzAgfCAgICAgMC4wNzMgfCAgICAgMC4wNzcgfCAgICAgMC4wOTEgfCAgICAgMC4xNjUgfCAgICAgMC4zMDIgfCAgICAgMC4wNTggfCAgICAgICAgICAgfCBcbi0tLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS18XG5cbiBcbiJ9 -->
+<pre><code>
+ 
+   Cell Contents
+|-------------------------|
+|                       N |
+| Chi-square contribution |
+|           N / Row Total |
+|           N / Col Total |
+|         N / Table Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  100000 
+
+ 
+                | data$insurance_segment_id 
+      data$race |         1 |         2 |         3 |         4 |         5 |         6 |         7 |         8 | Row Total | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+American Indian |        41 |        28 |        38 |        27 |        73 |        47 |        58 |        30 |       342 | 
+                |     3.979 |     0.643 |     6.728 |     0.010 |    56.121 |     1.535 |    19.847 |     5.306 |           | 
+                |     0.120 |     0.082 |     0.111 |     0.079 |     0.213 |     0.137 |     0.170 |     0.088 |     0.003 | 
+                |     0.003 |     0.004 |     0.005 |     0.003 |     0.008 |     0.003 |     0.002 |     0.005 |           | 
+                |     0.000 |     0.000 |     0.000 |     0.000 |     0.001 |     0.000 |     0.001 |     0.000 |           | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+          Asian |       130 |       113 |       126 |       120 |        73 |       319 |       533 |        65 |      1479 | 
+                |    51.704 |     0.765 |     2.922 |     0.259 |    28.340 |    23.440 |    16.709 |     4.897 |           | 
+                |     0.088 |     0.076 |     0.085 |     0.081 |     0.049 |     0.216 |     0.360 |     0.044 |     0.015 | 
+                |     0.008 |     0.016 |     0.017 |     0.015 |     0.008 |     0.019 |     0.018 |     0.011 |           | 
+                |     0.001 |     0.001 |     0.001 |     0.001 |     0.001 |     0.003 |     0.005 |     0.001 |           | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+          Black |      1654 |      1865 |      1240 |      1383 |      1323 |      1296 |      3585 |      1122 |     13468 | 
+                |   136.386 |   887.751 |    65.750 |   110.761 |     7.412 |   382.586 |    57.109 |   151.907 |           | 
+                |     0.123 |     0.138 |     0.092 |     0.103 |     0.098 |     0.096 |     0.266 |     0.083 |     0.135 | 
+                |     0.101 |     0.265 |     0.169 |     0.179 |     0.145 |     0.079 |     0.119 |     0.194 |           | 
+                |     0.017 |     0.019 |     0.012 |     0.014 |     0.013 |     0.013 |     0.036 |     0.011 |           | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+        Chinese |        98 |        45 |        35 |        37 |        13 |       263 |       361 |        24 |       876 | 
+                |    14.281 |     4.494 |    13.209 |    14.024 |    55.964 |    97.878 |    35.185 |    13.995 |           | 
+                |     0.112 |     0.051 |     0.040 |     0.042 |     0.015 |     0.300 |     0.412 |     0.027 |     0.009 | 
+                |     0.006 |     0.006 |     0.005 |     0.005 |     0.001 |     0.016 |     0.012 |     0.004 |           | 
+                |     0.001 |     0.000 |     0.000 |     0.000 |     0.000 |     0.003 |     0.004 |     0.000 |           | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+       Hispanic |      1452 |      1101 |       705 |       993 |       550 |      1558 |      3584 |       733 |     10676 | 
+                |    49.359 |   162.806 |     7.426 |    33.384 |   183.974 |    22.619 |    40.238 |    21.867 |           | 
+                |     0.136 |     0.103 |     0.066 |     0.093 |     0.052 |     0.146 |     0.336 |     0.069 |     0.107 | 
+                |     0.089 |     0.156 |     0.096 |     0.128 |     0.060 |     0.095 |     0.119 |     0.127 |           | 
+                |     0.015 |     0.011 |     0.007 |     0.010 |     0.005 |     0.016 |     0.036 |     0.007 |           | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+       Japanese |        31 |        18 |         8 |        10 |         2 |        43 |        47 |         7 |       166 | 
+                |     0.549 |     3.418 |     1.415 |     0.635 |    11.395 |     8.992 |     0.195 |     0.700 |           | 
+                |     0.187 |     0.108 |     0.048 |     0.060 |     0.012 |     0.259 |     0.283 |     0.042 |     0.002 | 
+                |     0.002 |     0.003 |     0.001 |     0.001 |     0.000 |     0.003 |     0.002 |     0.001 |           | 
+                |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |           | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+          Other |      6104 |      1412 |      1409 |      1474 |      1471 |      5147 |      8468 |      1427 |     26912 | 
+                |   659.809 |   122.573 |   159.342 |   178.718 |   393.139 |   116.053 |    14.341 |    10.532 |           | 
+                |     0.227 |     0.052 |     0.052 |     0.055 |     0.055 |     0.191 |     0.315 |     0.053 |     0.269 | 
+                |     0.373 |     0.201 |     0.193 |     0.190 |     0.161 |     0.313 |     0.280 |     0.247 |           | 
+                |     0.061 |     0.014 |     0.014 |     0.015 |     0.015 |     0.051 |     0.085 |     0.014 |           | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+     Portuguese |         0 |         0 |         0 |         1 |         0 |         0 |         3 |         0 |         4 | 
+                |     0.654 |     0.281 |     0.293 |     1.538 |     0.365 |     0.658 |     2.659 |     0.231 |           | 
+                |     0.000 |     0.000 |     0.000 |     0.250 |     0.000 |     0.000 |     0.750 |     0.000 |     0.000 | 
+                |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |           | 
+                |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |     0.000 |           | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+          White |      6840 |      2455 |      3756 |      3700 |      5610 |      7788 |     13558 |      2370 |     46077 | 
+                |    63.856 |   191.232 |    43.861 |     4.834 |   473.421 |     5.447 |     9.102 |    32.098 |           | 
+                |     0.148 |     0.053 |     0.082 |     0.080 |     0.122 |     0.169 |     0.294 |     0.051 |     0.461 | 
+                |     0.418 |     0.349 |     0.513 |     0.478 |     0.615 |     0.473 |     0.449 |     0.410 |           | 
+                |     0.068 |     0.025 |     0.038 |     0.037 |     0.056 |     0.078 |     0.136 |     0.024 |           | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+   Column Total |     16350 |      7037 |      7317 |      7745 |      9115 |     16461 |     30197 |      5778 |    100000 | 
+                |     0.164 |     0.070 |     0.073 |     0.077 |     0.091 |     0.165 |     0.302 |     0.058 |           | 
+----------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+
+ </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAicmVncmVzc2lvbiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmhlYWQoZGF0YSkKYGBgCgoKYGBge3J9CiNtdWx0aXZhcmlhdGUgcmVncmVzc2lvbgpyZWdyZXNzaW9uXzEgPC0gbG0gKGluc3VyYW5jZV9zZWdtZW50X2lkfiBpbmNvbWUgKyBlY29ub21pY19zdGFiaWxpdHkgKyBlZHVjYXRpb25faWQgKyBmYWNlYm9va191c2VyX3JhbmsgKyByYWNlX2NvZGUgKyB5b3V0dWJlX3VzZXJfcmFuayArIGdlbmRlcl9kdW0sICBkYXRhPWRhdGEpCnN1bW1hcnkocmVncmVzc2lvbl8xKQpgYGAKCiMjIFN0cm9uZ2VzdCBjb3JyZWxhdGlvbiB3aXRoIGluc3VyYW5jZSBzZWdtZW50CjEuIEdlbmRlcgoyLiBFY29ub21pYyBzdGFiaWxpdHkKMy4gRWR1Y2F0aW9uCjQuIEZhY2Vib29rIFVzZXIgUmFuawo1LiBSYWNlCjYuIFlvdXR1YmUgVXNlciBSYW5r</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAicmVncmVzc2lvbiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmhlYWQoZGF0YSkKYGBgCgoKYGBge3J9CiNtdWx0aXZhcmlhdGUgcmVncmVzc2lvbgpyZWdyZXNzaW9uXzEgPC0gbG0gKGluc3VyYW5jZV9zZWdtZW50X2lkfiBpbmNvbWUgKyBlY29ub21pY19zdGFiaWxpdHkgKyBlZHVjYXRpb25faWQgKyBmYWNlYm9va191c2VyX3JhbmsgKyByYWNlX2NvZGUgKyB5b3V0dWJlX3VzZXJfcmFuayArIGdlbmRlcl9kdW0sICBkYXRhPWRhdGEpCnN1bW1hcnkocmVncmVzc2lvbl8xKQpgYGAKCiMjIFN0cm9uZ2VzdCBjb3JyZWxhdGlvbiB3aXRoIGluc3VyYW5jZSBzZWdtZW50CjEuIEdlbmRlcgoyLiBFY29ub21pYyBzdGFiaWxpdHkKMy4gRWR1Y2F0aW9uCjQuIEZhY2Vib29rIFVzZXIgUmFuawo1LiBSYWNlCjYuIFlvdXR1YmUgVXNlciAKCmBgYHtyfQojIGNoaSBzcXVhcmUgZm9yIHJhY2UgYnkgc2VnbWVudApvcHRpb25zKHNjaXBlbiA9IDk5OSkKbGlicmFyeShnbW9kZWxzKQpDcm9zc1RhYmxlKGRhdGEkcmFjZSwgZGF0YSRpbnN1cmFuY2Vfc2VnbWVudF9pZCkKYGBgCgo=</div>
 
 
 

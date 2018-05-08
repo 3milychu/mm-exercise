@@ -910,8 +910,6 @@ function getCircles() {
 
     d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/static/data.json", function(json){
 
-    json.length = json.length-1;
-
     var totalRadius=Math.sqrt((json.length)/Math.PI);
     console.log("The area of circle BOB: "+ Math.PI*Math.pow(totalRadius,2));
     var lowCircleR = Math.sqrt((groupByClass[0].value/json.length)*json.length/Math.PI);
@@ -943,11 +941,11 @@ function getCircles() {
     var esCircles = [
     {"radius": "10", "color" : "#064BA3", "x_axis": ".48", "y_axis": ".55", "label": "Book of Business", 
     "percent": groupByClass[1].value , "movex": ".47", "movey": ".53", "begRadius": totalRadius, "opacity":"1"},
-    {"radius": lowCircleR, "color" : "#81BEDB", "x_axis": ".48", "y_axis": ".5", "label": "", 
+    {"radius": lowCircleR, "color" : "#81BEDB", "x_axis": ".48", "y_axis": ".65", "label": "", 
     "percent": groupByClass[0].value, "movex": ".18", "movey": ".5","begRadius": "10", "opacity": "1"},
-    {"radius": highCircleR, "color" : "#04316A" , "x_axis": ".48", "y_axis": ".5", "label": "", 
+    {"radius": highCircleR, "color" : "#04316A" , "x_axis": ".48", "y_axis": ".35", "label": "", 
     "percent": groupByClass[1].value , "movex": ".47", "movey": ".5","begRadius": "10", "opacity": "1"},
-    {"radius": mediumCircleR, "color" : "#199CDB", "x_axis": ".48", "y_axis": ".5", "label": "", 
+    {"radius": mediumCircleR, "color" : "#199CDB", "x_axis": ".48", "y_axis": ".25", "label": "", 
     "percent": groupByClass[2].value , "movex": ".78", "movey": ".5", "begRadius": "10", "opacity": "1"}
     
     ];

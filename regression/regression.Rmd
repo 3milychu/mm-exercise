@@ -20,4 +20,12 @@ summary(regression_1)
 3. Education
 4. Facebook User Rank
 5. Race
-6. Youtube User Rank
+6. Youtube User 
+
+```{r}
+# chi square for race by segment
+options(scipen = 999)
+library(gmodels)
+CrossTable(data$race, data$insurance_segment_id)
+```
+
