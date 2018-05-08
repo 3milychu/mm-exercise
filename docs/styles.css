@@ -476,41 +476,42 @@ button:hover {
 }
 
 #seg1bob:hover #percent-bob {
-	display:inline;
+	opacity:1;
 }
 
 #seg2bob:hover #percent-bob2 {
-	display:inline;
+	opacity:1;
 }
 
 #seg3bob:hover #percent-bob3 {
-	display:inline;
+	opacity:1;
 }
 
 #seg4bob:hover #percent-bob4 {
-	display:inline;
+	opacity:1;
 }
 
 #seg5bob:hover #percent-bob5 {
-	display:inline;
+	opacity:1;
 }
 
 #seg6bob:hover #percent-bob6 {
-	display:inline;
+	opacity:1;
 }
 
 #seg7bob:hover #percent-bob7 {
-	display:inline;
+	opacity:1;
 }
 
 #seg8bob:hover #percent-bob8 {
-	display:inline;
+	opacity:1;
 }
 
 .container svg text {
-	display:none;
 	font-size:0.8em;
 	font-weight:900;
+	opacity:0;
+	transition: 0.5s ease;
 }
 
 #es svg {
@@ -652,6 +653,9 @@ close:hover {
 	.container h3 {
 		line-height:1em;
 		width:100%;
+	}
+	.next .content p {
+		font-size:1em;
 	}
 
 }
