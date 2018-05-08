@@ -1081,8 +1081,8 @@ function getArcs() {
         .endAngle(360*Math.PI/180);
 
     var arc1 = d3.arc()
-        .innerRadius(18)
-        .outerRadius(20)
+        .innerRadius(16)
+        .outerRadius(22)
         .startAngle(0)
         .endAngle((seg1.length/total*360)*Math.PI/180);
 
@@ -1100,6 +1100,12 @@ function getArcs() {
         .attr("dy", 5)
         .attr("id", "percent-bob")
         .text(formatPercent(seg1.length/total));
+
+    seg1svg.append("text")
+        .attr("id", "percent-bob-label")
+        .attr("dx", -30)
+        .attr("dy", 45)
+        .text("% of BOB");
 
 
         // Seg 2 % of BOB
@@ -1119,8 +1125,8 @@ function getArcs() {
         .endAngle(360*Math.PI/180);
 
     var arc2 = d3.arc()
-        .innerRadius(18)
-        .outerRadius(20)
+        .innerRadius(16)
+        .outerRadius(22)
         .startAngle(0)
         .endAngle((seg2.length/total*360)*Math.PI/180);
 
@@ -1139,6 +1145,13 @@ function getArcs() {
         .attr("id", "percent-bob2")
         .text(formatPercent(seg2.length/total));
 
+    seg2svg.append("text")
+        .attr("id", "percent-bob-label2")
+        .attr("dx", -30)
+        .attr("dy", 45)
+        .text("% of BOB");
+
+
     // Seg 3 % of BOB
     var seg3svg = d3.select(".overlay3")
     .append("svg")
@@ -1156,8 +1169,8 @@ function getArcs() {
         .endAngle(360*Math.PI/180);
 
     var arc3 = d3.arc()
-        .innerRadius(18)
-        .outerRadius(20)
+        .innerRadius(16)
+        .outerRadius(22)
         .startAngle(0)
         .endAngle((seg3.length/total*360)*Math.PI/180);
 
@@ -1176,6 +1189,13 @@ function getArcs() {
         .attr("id", "percent-bob3")
         .text(formatPercent(seg3.length/total));
 
+    seg3svg.append("text")
+        .attr("id", "percent-bob-label3")
+        .attr("dx", -30)
+        .attr("dy", 45)
+        .text("% of BOB");
+
+
     // Seg 4 % of BOB
     var seg4svg = d3.select(".overlay4")
     .append("svg")
@@ -1193,8 +1213,8 @@ function getArcs() {
         .endAngle(360*Math.PI/180);
 
     var arc4 = d3.arc()
-        .innerRadius(18)
-        .outerRadius(20)
+        .innerRadius(16)
+        .outerRadius(22)
         .startAngle(0)
         .endAngle((seg4.length/total*360)*Math.PI/180);
 
@@ -1213,6 +1233,12 @@ function getArcs() {
         .attr("id", "percent-bob4")
         .text(formatPercent(seg4.length/total));
 
+    seg4svg.append("text")
+        .attr("id", "percent-bob-label4")
+        .attr("dx", -30)
+        .attr("dy", 45)
+        .text("% of BOB");
+
  // Seg 5 % of BOB
     var seg5svg = d3.select(".overlay5")
     .append("svg")
@@ -1230,8 +1256,8 @@ function getArcs() {
         .endAngle(360*Math.PI/180);
 
     var arc5 = d3.arc()
-        .innerRadius(18)
-        .outerRadius(20)
+        .innerRadius(16)
+        .outerRadius(22)
         .startAngle(0)
         .endAngle((seg5.length/total*360)*Math.PI/180);
 
@@ -1249,6 +1275,12 @@ function getArcs() {
         .attr("dy", 5)
         .attr("id", "percent-bob5")
         .text(formatPercent(seg5.length/total));
+
+    seg5svg.append("text")
+        .attr("id", "percent-bob-label5")
+        .attr("dx", -30)
+        .attr("dy", 45)
+        .text("% of BOB");
 
 
  // Seg 6 % of BOB
@@ -1268,8 +1300,8 @@ function getArcs() {
         .endAngle(360*Math.PI/180);
 
     var arc6 = d3.arc()
-        .innerRadius(18)
-        .outerRadius(20)
+        .innerRadius(16)
+        .outerRadius(22)
         .startAngle(0)
         .endAngle((seg6.length/total*360)*Math.PI/180);
 
@@ -1288,6 +1320,13 @@ function getArcs() {
         .attr("id", "percent-bob6")
         .text(formatPercent(seg6.length/total));
 
+    seg6svg.append("text")
+        .attr("id", "percent-bob-label6")
+        .attr("dx", -30)
+        .attr("dy", 45)
+        .text("% of BOB");
+
+
  // Seg 7 % of BOB
     var seg7svg = d3.select(".overlay7")
     .append("svg")
@@ -1305,8 +1344,8 @@ function getArcs() {
         .endAngle(360*Math.PI/180);
 
     var arc7 = d3.arc()
-        .innerRadius(18)
-        .outerRadius(20)
+        .innerRadius(16)
+        .outerRadius(22)
         .startAngle(0)
         .endAngle((seg7.length/total*360)*Math.PI/180);
 
@@ -1324,6 +1363,13 @@ function getArcs() {
         .attr("dy", 5)
         .attr("id", "percent-bob7")
         .text(formatPercent(seg7.length/total));
+
+    seg7svg.append("text")
+        .attr("id", "percent-bob-label7")
+        .attr("dx", -30)
+        .attr("dy", 45)
+        .text("% of BOB");
+
  // Seg 8 % of BOB
     var seg8svg = d3.select(".overlay8")
     .append("svg")
@@ -1341,8 +1387,8 @@ function getArcs() {
         .endAngle(360*Math.PI/180);
 
     var arc8 = d3.arc()
-        .innerRadius(18)
-        .outerRadius(20)
+        .innerRadius(16)
+        .outerRadius(22)
         .startAngle(0)
         .endAngle((seg8.length/total*360)*Math.PI/180);
 
@@ -1360,5 +1406,12 @@ function getArcs() {
         .attr("dy", 5)
         .attr("id", "percent-bob8")
         .text(formatPercent(seg8.length/total));
+
+    seg8svg.append("text")
+        .attr("id", "percent-bob-label8")
+        .attr("dx", -30)
+        .attr("dy", 45)
+        .text("% of BOB");
+
 
 }

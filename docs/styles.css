@@ -479,31 +479,57 @@ button:hover {
 	opacity:1;
 }
 
+#seg1bob:hover #percent-bob-label {
+	opacity:1;
+}
+
 #seg2bob:hover #percent-bob2 {
+	opacity:1;
+}
+
+#seg2bob:hover #percent-bob-label2 {
 	opacity:1;
 }
 
 #seg3bob:hover #percent-bob3 {
 	opacity:1;
 }
+#seg3bob:hover #percent-bob-label3 {
+	opacity:1;
+}
 
 #seg4bob:hover #percent-bob4 {
+	opacity:1;
+}
+#seg4bob:hover #percent-bob-label4 {
 	opacity:1;
 }
 
 #seg5bob:hover #percent-bob5 {
 	opacity:1;
 }
+#seg5bob:hover #percent-bob-label5 {
+	opacity:1;
+}
 
 #seg6bob:hover #percent-bob6 {
+	opacity:1;
+}
+#seg6bob:hover #percent-bob-label6 {
 	opacity:1;
 }
 
 #seg7bob:hover #percent-bob7 {
 	opacity:1;
 }
+#seg7bob:hover #percent-bob-label7 {
+	opacity:1;
+}
 
 #seg8bob:hover #percent-bob8 {
+	opacity:1;
+}
+#seg8bob:hover #percent-bob-label8 {
 	opacity:1;
 }
 
@@ -554,7 +580,7 @@ circle #Low:hover #section1 {
 }
 
 .arc-bg {
-    fill: #d6d4d4;
+    fill: #c9c7c7;
 }
 
 .details {
