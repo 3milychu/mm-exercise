@@ -686,6 +686,20 @@ close:hover {
 
 }
 
+  @media screen and (min-width:1700px) {
+  	.overlay h1, .overlay2 h1, .overlay3 h1,
+	.overlay4 h1, .overlay5 h1, .overlay6 h1,
+	.overlay6 h1, .overlay7 h1, .overlay8 h1{
+		width:60%;
+	}
+	.overlay button, .overlay1 button, .overlay2 button, .overlay3 button,
+	.overlay4 button, .overlay5 button, .overlay6 button, .overlay7 button,
+	.overlay8 button {
+		padding:15% 30% 0% 35%;
+	}
+
+  }
+
   @media screen and (max-width:1051px) and (min-width:948px){
  		#es {
  			height:100vh;
