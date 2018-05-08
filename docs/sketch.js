@@ -910,13 +910,16 @@ function getCircles() {
 
     d3.json("https://raw.githubusercontent.com/3milychu/mm-exercise/master/static/data.json", function(json){
 
-    var totalRadius=Math.sqrt(json.length/Math.PI)
-    var lowCircleR = (groupByClass[0].value/json.length)*totalRadius;
-    console.log(lowCircleR);
-    var highCircleR = (groupByClass[1].value/json.length)*totalRadius;
-    console.log(highCircleR);
-    var mediumCircleR = (groupByClass[2].value/json.length)*totalRadius;
-    console.log(mediumCircleR);
+    json.length = json.length-1;
+
+    var totalRadius=Math.sqrt((json.length)/Math.PI);
+    console.log("The area of circle BOB: "+ Math.PI*Math.pow(totalRadius,2));
+    var lowCircleR = Math.sqrt((groupByClass[0].value/json.length)*json.length/Math.PI);
+    console.log("The area of circle Low: "+ Math.PI*Math.pow(lowCircleR,2));
+    var highCircleR = Math.sqrt((groupByClass[1].value/json.length)*json.length/Math.PI);
+    console.log("The area of circle High: "+ Math.PI*Math.pow(highCircleR,2));
+    var mediumCircleR = Math.sqrt((groupByClass[2].value/json.length)*json.length/Math.PI);
+    console.log("The area of circle Medium: "+ Math.PI*Math.pow(mediumCircleR,2));
 
     lowF= json.filter(function(d) { 
     return (d.economic_stability_class == "Low") & (d.gender == "F")
@@ -938,14 +941,14 @@ function getCircles() {
     });
 
     var esCircles = [
-    {"radius": "0", "color" : "#064BA3", "x_axis": ".48", "y_axis": ".55", "label": "Book of Business", 
+    {"radius": "10", "color" : "#064BA3", "x_axis": ".48", "y_axis": ".55", "label": "Book of Business", 
     "percent": groupByClass[1].value , "movex": ".47", "movey": ".53", "begRadius": totalRadius, "opacity":"1"},
     {"radius": lowCircleR, "color" : "#81BEDB", "x_axis": ".48", "y_axis": ".5", "label": "", 
-    "percent": groupByClass[0].value, "movex": ".18", "movey": ".5","begRadius": "0", "opacity": "1"},
+    "percent": groupByClass[0].value, "movex": ".18", "movey": ".5","begRadius": "10", "opacity": "1"},
     {"radius": highCircleR, "color" : "#04316A" , "x_axis": ".48", "y_axis": ".5", "label": "", 
-    "percent": groupByClass[1].value , "movex": ".47", "movey": ".5","begRadius": "0", "opacity": "1"},
+    "percent": groupByClass[1].value , "movex": ".47", "movey": ".5","begRadius": "10", "opacity": "1"},
     {"radius": mediumCircleR, "color" : "#199CDB", "x_axis": ".48", "y_axis": ".5", "label": "", 
-    "percent": groupByClass[2].value , "movex": ".78", "movey": ".5", "begRadius": "0", "opacity": "1"}
+    "percent": groupByClass[2].value , "movex": ".78", "movey": ".5", "begRadius": "10", "opacity": "1"}
     
     ];
 
@@ -1017,33 +1020,11 @@ function getCircles() {
 
      $("#bob-label").delay(500).slideUp(100)
 
-
     setTimeout(
       function() 
       {
         showText();
       }, 2000);
-
-    var setEvents = circle
-    .on( 'click', function() {
-      // d3.selectAll("circle")
-      // .transition(t)
-      // .attr("cx", function (d) { return formatPercent(d.x_axis - d.movex); })
-      // .attr("cy", function (d) { return formatPercent(d.y_axis - d.movey); }) 
-    })
-
-    .on( 'mouseenter', function() {
-    // select element in current context
-    d3.select( this )
-      // .transition()
-      // .attr("r",  function(d){return d.radius + 10})
-    })
-    // set back
-    .on( 'mouseleave', function() {
-    d3.select( this )
-      // .transition()
-      // .attr("r",  function(d){return d.radius})
-    });
 
     });
 }
